@@ -1,0 +1,1271 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+	    <meta charset="utf-8">
+
+	    <title>Effective Java SE 11 through 12 APIs &amp; Language features, makes your life easier</title>
+
+	    <meta name="description" content="A short summary &amp; overview of the new features  &amp; the hidden treasures of Java SE 12">
+	    <meta name="author" content="Mohamed Mahmoud Taman">
+
+	    <meta name="apple-mobile-web-app-capable" content="yes"/>
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui"/>
+
+	    <link rel="stylesheet" href="css/reset.css"/>
+		<link rel="stylesheet" href="css/reveal.css"/>
+		<link rel="stylesheet" href="css/theme/black.css" id="theme"/>
+
+	    <!-- Code syntax highlighting -->
+	    <link rel="stylesheet" href="lib/css/zenburn.css">
+	    <!-- <link rel="stylesheet" href="lib/css/monokai.css"> -->
+
+	    <!-- Custom, overriding CSS -->
+	    <link rel="stylesheet" href="css/custom.css">
+
+	    <!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<!--
+          === Logos ===============================================================================
+        -->
+      
+		<div style="position: absolute; top: 5px; z-index: 6; right: 0; margin-right: 10px">
+        	<img src="media/img/logos/O-Groundbreakers-Logo.png" width="300" height="100" alt="Riga Dev Days 2019" />
+        	<img src="media/img/logos/Java Champoins.jpeg" width="100" height="100" alt="Java Champions" />
+    	</div>
+    	<div style="position: absolute; top: 5px; z-index: 6; left: 0; margin-left: 10px">
+        <img src="media/img/logos/rdd2019-logo.png" width="200" height="80" alt="Riga Dev Days 2019" />
+    	</div>
+
+		<!-- Slides -->
+		<div class="reveal">
+
+		    <!-- Any section element inside of this container is displayed as a slide -->
+		    <div class="slides">
+
+		        <!--
+		          === Slide 1- Presentation title & about me =================================================
+		        -->		        
+		        <section>		        	
+		        	<!-- Slide 1.1 - Cover page -->
+			        <section>
+			        	<div style="width: 80%; margin: 0 auto">      
+	                    	<h3 style="text-align: center;margin: 00px 0 80px 0">Effective <span style="color: orange">Java SE 9</span> through <span style="color: orange">12</span> APIs &amp; Language features, that make your life easier.</h3>
+
+			            </div>
+			                <div class="profile" style="position: absolute; top: 200px; left: 300px">
+			                    <div class="profile-sidebar" style="border-radius: 15px 15px 0 0">
+			                        <div class="profile-userpic">
+			                            <img data-src="media/img/logos/TamanFace.jpg" class="img-responsive" alt="">
+			                        </div>
+			                        <div class="profile-usertitle">
+			                            <div class="profile-usertitle-name">
+			                                Mohamed Taman
+			                            </div>
+			                            <div class="profile-usertitle-job">
+			                                 Sr. Enterprise Architect @Voyego by Comtrade,
+			                                 Belgrade, Serbia.
+			                            </div>
+			                        </div>
+			                    </div>
+			                    <div class="profile-content" style="border-radius:0 0 10px 10px">
+			                        <table>
+			                        	<tr>
+			                        		<td style="text-align: right; vertical-align: middle; padding: 0"><img data-src="media/img/twitter.png" style="background-color: transparent; border-color: transparent; width: 30%;margin: 0px 0px;"/></td>
+			                        		<td style="text-align: left; vertical-align: middle; padding: 0"><a href="https://twitter.com/_tamanm"> @_tamanm</a></td>
+			                        	</tr>
+			                        </table>
+			                    </div>
+			                </div>
+			         </section>
+			        <!--
+		          		=== Slide 1.2 - Me, I, and Myself ===================================================================
+		        	-->
+			        <section>
+			            <h3>Me, I, and Myself <img src="media/img/logos/TamanFace.jpg" style="width: 65px; border-radius: 50%"></h3>
+			            <br/>
+		                <div class="container" style="font-size: .70em;">
+			                <ul>
+			                	<li class="fragment fade-down"><strong>Sr. Enterprise Architect</strong><br/>
+									Works for Voyego by Comtrade, work & lives in Beograd, Serbia.<em>Originally Egyptian</em>.<br/><br/>
+			                	</li>
+			                	<li class="fragment fade-down">
+			                		A <strong> Java Champion</strong>, <strong>Oracle Groundbreakers Ambassador</strong>, Web / AWS / Spring Cloud / Mobile / Big Data / Cloud / Blockchain / DevOps, JCP, <u>2013 - 2015</u> Duke Award winner 3 times, <u>2013</u> JCP award winner, International Speaker & Author.<br/><br/>
+			                	</li>
+			                	</ul>
+		                		<table class="fragment fade-down" style="width: 70%; height: 70%">
+		                        	<tr>
+		                        		<td style="vertical-align: middle; padding-right: 5"><img data-src="media/img/infoQ.jpg" style="background-color: transparent; border-color: transparent; width: 200px;margin: 0px 0px;"/></td>
+		                        		<td style="vertical-align: middle; padding-right: 5"><img data-src="media/img/IBM Developer.jpeg" style="background-color: transparent; border-color: transparent; width: 200px;margin: 0px 0px;"/></td>
+		                        		<td style="vertical-align: middle; padding-right: 5"><img data-src="media/img/B03998_JavaFX 8 Essentials.jpg" style="background-color: transparent; border-color: transparent; width: 400px;margin: 0px 0px;"/></td>
+		                        		<td style="vertical-align: middle; padding-right: 5""><img data-src="media/img/V06608_low.png" style="background-color: transparent; border-color: transparent; width: 400px;margin: 0px 0px;"/></td>
+		                        		<td style="vertical-align: middle; padding-right: 5""><img data-src="media/img/V06153_low.png" style="background-color: transparent; border-color: transparent; width: 400px;margin: 0px 0px;"/></td>
+		                        	</tr>
+		                        </table>
+		                </div>
+			        </section>
+
+			        <!--
+			          === Slide 1.3 - reach me ============================================================================
+			        -->
+			        <section>
+			            <h3>You can catch me (🤝) <br/><br/><span class="fragment">here 👇</span></h3>
+
+			            <ul style="width: 90%" class="fragment">
+			            	<li><strong>@_tamanm</strong><br/></li>
+
+		                    <li><a href="https://eg.linkedin.com/in/mohamedtaman">https://eg.linkedin.com/in/mohamedtaman</a><br/></li>
+
+		                    <li><a href="https://github.com/mohamed-taman">https://github.com/mohamed-taman</a><br/></li>
+
+		                    <li><a href="https://www.slideshare.net/tamanm">https://www.slideshare.net/tamanm</a><br/></li>
+
+		                    <li><a href="http://tamanmohamed.blogspot.com">http://tamanmohamed.blogspot.com</a><br/></li>
+
+		                    <li><a href="https://www.facebook.com/public/Mohamed-Mahmoud-Taman">https://www.facebook.com/public/Mohamed-Mahmoud-Taman</a><br/></li>
+			            </ul>
+			            <br/><br/>
+			            <div class="fragment fade-right">
+			            	Or more easer try to <i>google</i> 🕵 me <strong>"Mohamed Taman"</strong>
+			            </div> 
+			        </section>
+		         </section>
+		        <!--
+		          === Slide 2- Introduction (Java History) ===================================================
+		        -->
+		        <section>
+		           <h2>Java History 🛣 </h2>
+		           <img style="border-radius: 15px 15px 15px 15px" class="fragment fade-down" src="media/img/image_01.png" alt="Java history">
+		        </section>
+
+		        <!--
+		          === Slide 3 - Modularity =======================================================
+		        -->
+		        <section>
+		        	<!-- Slide 3.1 - Modularity -->
+			        <section>
+			            <h2>Big change (<span style="color: yellow">Modularity</span> 📦 )</h2>
+			            <div class="fragment">
+				            <div data-markdown>
+		                        <script type="text/template">
+		                            ### Jigsaw [JEP 201](http://openjdk.java.net/jeps/201)<!-- .element: class="jep" -->
+								</script>
+	                    	</div>
+	                    	<blockquote>
+								&ldquo; Module bundle together one or more packages, and offer stronger encapsulation than jars. &rdquo;
+							</blockquote>
+						</div>
+						<br/>
+	                    <ul>
+		                    <li class="fragment fade-up">Allow <strong>scaled down runtime JAR</strong> &rarr; IoT, Micro-services, Embedded, Cloud.</li>
+		                    <li class="fragment fade-up"><strong>Stronger</strong>: In a module: <code>public</code> is no longer public to others.</li>
+	                    </ul>
+			        </section>
+			        <!-- Slide 3.2 - Features -->
+				    <section>
+	                  <h2>Jigsaw project goals</h2>
+	                  <h1>🥅</h1>
+	                  <ul>
+	                    <li class="fragment">Modular JDK</li>
+	                    <li class="fragment">Modular Java Source Code</li>
+	                    <li class="fragment">Modular Runtime Images</li>
+	                    <li class="fragment">Encapsulate Java Internal APIs</li>
+	                    <li class="fragment">Java Platform Module System</li>
+	                  </ul>
+	                </section>
+	                <!-- Slide 3.2 - migration tools -->
+	                <section>
+	                    <h2>Tools ⚒ for ease of code migrations</h2>
+	                    <ul>
+		                    <li class="fragment">List built-in modules: <code>java --list-modules</code></li>
+		                    <li class="fragment">Find dependencies:&nbsp;&nbsp;&nbsp; <code>jdeps -jdkinternals app.jar</code></li>
+		                    <li class="fragment">Find deprecations:&nbsp;&nbsp;&nbsp;&nbsp; <code>jdeprscan app.jar</code></li>
+	                    </ul>
+                	</section>
+		        </section>
+
+		        <!--
+		          === Slide 4 - 6 month release cadence (More productivity) ===================================
+		        -->
+		        <section>
+		        	<!-- Slide 4.1 - 6 month release cadence -->
+			        <section>
+			           <h1>6 months release cadence <br/>
+			           <span class="fragment"><strong>🏎</strong></span>
+			           </h1>
+			        </section>
+			        <!-- Slide 4.2 - LTS -->
+			        <section>
+			           <br/>
+			           <h2>LTS🎗 (Long-Term-Support)</h2>
+			           <img style="border-radius: 10px 10px 10px 10px; width: 70%" class="fragment" src="media/img/image_02.jpg" alt="6 month release">
+			        </section>
+			        <!-- Slide 4.3 - Java SE 11 Vacuum Cleaner -->
+			        <section>
+			           <h1><span style="color: orange">Java SE 11</span>, is the <br/><br/><span class="fragment" style="font-size:120%">🧹</span><br/><span class="fragment">for Java jungle...</span></h1>
+			        </section>
+			        <!-- Slide 4.4 - Is Java Still Free -->
+			        <section>
+			        	<h2>What is behind the new licensing model of Oracle Java?</h2>
+			            <p>Oracle licensed Java to be commercial used starting from Java 8.</p>
+			            <br/> <br/> 
+			            <h3 class="fragment">Is <em>Java Still Free</em> of charge?</h3>
+			            <br/> 
+			            <div class="fragment">
+			            <h3>Yes it is 💃🕺</h3>
+			            👉 <a href="https://medium.com/codefx-weekly/no-free-java-lts-version-b850192745fb">Java is Still Free 2.0.3</a>
+						</div>
+			        </section>
+		        </section>
+
+		        <!--
+		          === Slide 5 - First time preview language feature (Why) =======================================
+		        -->
+		        <section>
+		           <h1>For the first time, <span style="color: orange">Java 12</span></h1>
+		           <div class="fragment">
+			           <h3>introduces a preview language feature</h3>
+			           <h1> <strong>🤔</strong></h1>
+		           </div>
+		        </section>
+
+		        <!--
+		          === Slide 6 - Agenda ==========================================================================
+		        -->
+		        <section>
+			        <h1>Agenda</h1>
+			        <ol>
+						<li class="fragment">What is new?</li>
+						<li class="fragment">Explore new language features.</li>
+						<li class="fragment">Explore most of new & Improved APIs.</li>
+						<li class="fragment">Farewell to APIs has gone forever.</li>
+					</ol>
+		        </section>
+
+		        <!--
+		          === Slide 7 - No more JRE =====================================================================
+		        -->
+		        <section>
+			        <section>
+			        	<h1>No more <em>JRE</em> available out there! 😱 </h1>
+			        	<ul>
+			        		<li class="fragment">JRE installation package is gone, since <span style="color: orange">Java SE 11</span>.</li>
+			        		<li class="fragment"><code>jlink</code> tool is here, to generate our custom JRE.</li>
+			        	</ul>
+			        </section>
+			        <!-- Slide 7.1 - What is jlink -->
+			        <section>
+		            	<h2>What is <code>jlink</code> ?</h2>
+		            	<div class="fragment">
+			            	<p style=" text-align: left; margin-left:130px"><strong>Linker</strong></p>
+			            	<blockquote>
+			            		<code>jlink</code> can be used to link a set of modules, along with their transitive dependences,
+	                            to create a custom modular run-time image.
+			            	</blockquote>
+		            	</div>
+		        	</section>
+		        </section>
+		        <!--
+		          === Slide 8 - Learning tools ==================================================================
+		        -->
+		        <section>
+			        <section>
+			           <h1>New learning 👩🏼‍🏫 tool added to the stack.</h1>
+			        </section>
+			        <!-- Slide 8.1 - JShell -->
+			        <section>
+			            <h3>Java Shell REPL tool: <code>jshell</code> - <span class="small" style="color: orange">Java 9</span></h3>
+			      	    <div data-markdown style="width: 75%; margin: 0 auto">
+	                        <script type="text/template">
+	                            ````
+	                            👻 mohamed_taman:~$ jshell
+	                            |  Welcome to JShell -- Version 12
+	                            |  For an introduction type: /help intro
+
+	                            jshell> 3 + 4 * 7
+	                            $1 ==> 31
+
+	                            jshell> int add(int a, int b) {
+	                            ...>   return a+b;
+	                            ...> }
+	                            |  created method add(int,int)
+
+	                            jshell> add(25, $1)
+	                            $3 ==> 56
+	                            ````
+	                            <!-- .element: class="small" -->
+	                            Get an overview with `/help` and  `/help shortcuts`
+	                            <!-- .element: class="x-small" -->
+	                        </script>
+                    	</div>
+                    	<br/>
+	                    <p class="x-small fragment">For more here is my two <strong>tutorial article</strong> at IBM Developer:<br/>
+			           		<a href="https://developer.ibm.com/tutorials/java-theory-and-practice-4/">Java theory and practice: Interactive Java programming (REPL) with JShell 12, Part 1, 2</a>
+			            </p>
+			        </section>
+
+			        <!-- Slide 8.2 - Old Days -->
+			        <section>
+			            <h2>Running <code>.java</code> old days</h2>
+			            <div data-markdown style="width: 75%; margin: 0 auto">
+	                        <script type="text/template">
+	                            #### We have a program like this:
+	                            ````
+	                            public class HelloWorld {      
+	                            	public static void main(String[] args) {
+	                            		System.out.println("Hello Riga 🧡 Developers World");
+	                            	}
+	                            }
+	                            ````
+	                            <!-- .element: class="small" -->
+
+	                            - Should be compiled to have `.class`
+	                            - Then run `.class` with java
+
+	                            <!-- .element: class="small" -->
+
+	                            ````
+	                            mohamed_taman$ javac HelloWorld.java
+
+	                            mohamed_taman$ java HelloWorld
+	                            Hello Riga 🧡 Developers World
+	                            ````
+	                            <!-- .element: class="small" -->
+	                        </script>
+                    	</div>
+			        </section>
+			        <!-- Slide 8.2 - Launch single-file -->
+			        <section>
+			            <h2>Run <code>.java</code> with <code>Java</code><span class="fragment" style="color: orange"> - Java 11</span></h2>
+			            <div class="fragment" data-markdown style="width: 80%; margin: 0 auto">
+                       		<script type="text/template">
+	                            ### Launch Single-File Source-Code Programs [JEP 330](http://openjdk.java.net/jeps/330)<!-- .element: class="jep" -->
+	                            ##### And now just only run it like this:
+
+	                            ````
+	                            mohamed_taman$ java HelloWorld.java
+	                            Hello Riga 🧡 Developers World
+	                            ````
+                        	</script>
+                    	</div>
+					<br/>
+		            <p class="x-small fragment">For more here is my <strong>tutorial article</strong> at IBM Developer:<br/>
+		           		<a href="https://developer.ibm.com/tutorials/java-theory-and-practice-2/">Java theory and practice: Run single-file source code programs without compilation</a>
+		            </p>
+			        </section>
+		        </section>
+
+		        <!--
+		          === Slide 9 - New Language features ===========================================================
+		        -->
+		        <section>
+		            <section>
+			           <h1><span style="color: orange">Java SE</span> language features<br/><br/> 🎉🎊</h1>
+			        </section>
+		           	<!-- Slide 9.1 - var type -->
+			        <section>
+			           <h2>New <code>var</code> type - <span style="color: orange">Java 10</span></h2>
+			           <div class="fragment" data-markdown style="width: 80%; margin: 0 auto">
+	                        <script type="text/template">
+				            #### Local-Variable Type Inference [JEP 286](http://openjdk.java.net/jeps/286)<!-- .element: class="jep" -->
+
+				            ````
+				            jshell> var name = "Mohamed Taman"
+				            name ==> "Mohamed Taman"
+
+				            jshell> var lastName = name.substring(8)
+				            lastName ==> "Taman"
+
+				            jshell> lastName.getClass().getTypeName()
+				            $3 ==> "java.lang.String"
+
+				            jshell> var list = List.of(1, 2, 3, 4, 5, 6, 7);
+				               ...>    var stream = list.stream();
+				               ...>    stream.filter(x ->  x % 2 == 0).forEach(System.out::println)
+				            list ==> [1, 2, 3, 4, 5, 6, 7]
+				            stream ==> java.util.stream.ReferencePipeline$Head@531d72ca
+				            2
+				            4
+				            6
+				            ````
+				            <!-- .element: class="small" -->
+				        	</script>
+			        	</div>
+			        	
+		            	<p class="x-small fragment">For more here is my <strong>tutorial article</strong> at InfoQ:<br/>
+		           			<a href="https://www.infoq.com/articles/java-10-var-type">Explore the New Java 10 “var” Type: An Introduction and Hands-on Tutorial</a>
+		            	</p>
+			        </section>
+					<!-- Slide 9.2 - var for lambda parameters. -->
+			        <section>
+			           <h3>Local-variable (<code>var</code>) Syntax for Lambda Parameters - <span style="color: orange">Java 11</span></h3>
+			           <pre class="fragment"><code>(String a, String b) -> a.concat(b)</code></pre>
+			           <pre class="fragment"><code>( a, b) -> a.concat(b)</code></pre>
+			           <pre class="fragment"><code>(var a, var b) -> a.concat(b)</code></pre>
+			           <div class="fragment">
+			           	Because annotations needs a type
+			           	<pre><code>(@Nullable var a, @Nonnull var b) -> a.concat(b)</code></pre>
+			           </div>
+
+			        </section>
+					<!-- Slide 9.3 - Shell scripting with Java: Shebang files -->
+			        <section>
+			        	
+			        	<h2>Shell scripting with Java: Shebang files - <span style="color: orange">Java 11</span></h2>
+			           	<div class="fragment" data-markdown style="width: 80%; margin: 0 auto">
+	                        <script type="text/template">
+				            ##### The source code is:
+				            ````
+				            #!/usr/bin/java --source 11
+
+				            import java.nio.file.*;
+				            public class DirectoryLister {
+				            	public static void main(String[] args) throws Exception {
+				            		
+				            		var dirName = ".";
+				            		
+				            		if ( args == null || args.length< 1 ){
+				            			System.err.println("Listing the current directory...");
+				            		} else {
+				            			dirName = args[0];
+				            		}
+
+				            		Files.walk(Paths.get(dirName)).forEach(out::println);
+				            	}}
+				            ````
+				            <!-- .element: class="small" -->
+				        	</script>
+			        	</div>
+			        </section>
+			        <!-- Slide 9.3.1 - Run Shebang files -->
+			        <section>
+			        	<h3>Run Java Shebang file</h3>
+			        	<div style="text-align: left; width: 80%; margin: 0 auto">
+				        	<p class="small">Save this code in a file named <code>dirlist</code> <em>without any extension</em> and then mark it as <strong>executable</strong>:</p>
+				           	<pre><code>mohamed_taman:code$ chmod +x dirlist</code></pre>
+			            </div>
+			           	<div class="fragment" data-markdown style="width: 80%; margin: 0 auto">
+	                        <script type="text/template">
+				            ###### Run it as the following:  
+				            Part of: Launch Single-File Source-Code Programs [JEP 330](http://openjdk.java.net/jeps/330)<!-- .element: class="jep" -->
+				            <!-- .element: class="x-small" -->
+
+				            ````
+				            mohamed_taman:code$ ./dirlist
+				            Listing the current directory...
+				            .
+				            ./PalindromeChecker.java
+				            ./greater
+				            ./UsersHttpClient.java
+				            ./HelloWorld.java
+				            ./Greater.java
+				            ./dirlist
+				            ````
+				        	</script>
+			        	</div>
+			        </section>
+					<!-- Slide 9.5 - The new, standardized HTTP Client module -->
+			        <section>
+			            <h2>HTTP & WebSocket Client module</h2>
+			            <h5>The evolution of <code>HttpClient</code> and <code>WebSocket</code> API</h5>
+			            <br/>
+			            <ul class="small">
+				           	<li class="fragment">The latest <code>HttpClient</code> and <code>WebSocket</code> APIs originally shipped with <span style="color: orange">JDK 9</span> under the Java Enhancement Proposal <span class="jep">JEP 110</span> as part of an incubator module named <code>jdk.incubator.httpclient</code>.<br/><br/></li> 
+				           	<li class="fragment">They were re-incubated again in <span style="color: orange">JDK 10</span>, but finally became standardized in a module named <code>java.net.http</code> and brought into the mainstream in <span style="color: orange">JDK 11</span> under <span class="jep">JEP 321</span>.<br/><br/></li>
+				           	<li class="fragment">This API provides a high-level client interface to HTTP (<em>versions 1.1 and 2</em>) and low-level client interfaces for the WebSocket API: <code>HttpClient</code>, <code>HttpRequest</code>, <code>HttpResponse</code>, and <code>WebSocket</code>.</li>
+
+
+			            </ul>
+			        </section>
+			        <!-- Slide 9.5.1 - The new HTTP Client module -->
+			        <section>
+			            <h2>HTTP Client module</h2>
+			            <h4>Demonstrating how all three APIs work together</h4>
+			            <pre class="fragment" style="width: 80%; margin: 0 auto">
+			            	<code>
+var client = HttpClient.newHttpClient();
+
+var request = HttpRequest.newBuilder()
+            .uri(create("https://postman-echo.com/get/"))
+            .build();
+
+client.sendAsync(request, ofString())
+      .thenApply(HttpResponse::body)
+      .thenAccept(out::println)
+      .join();
+			            	</code></pre>
+			            <p class="x-small fragment">For more here is my <strong>tutorial article</strong> at IBM Developer:<br/>
+		           			<a href="https://developer.ibm.com/tutorials/java-theory-and-practice-3/">Java theory and practice: Explore the new Java SE 11 HTTP Client and WebSocket APIs</a>
+		            	</p>
+			        </section>
+			        <!-- Slide 9.5.2 - The new, WebSocket -->
+			        <section>
+			            <h2>WebSocket Client module</h2>
+			            <div class="fragment">
+				            <p class="small" style="text-align: left; margin-left: 10%">First implement the <code>WebSocket.Listener</code> interface:</p>
+				            <pre class="small" style="width: 70%; margin: 0 auto">
+			            	<code>public final class EchoListener implements WebSocket.Listener {
+    @Override
+    public void onOpen(WebSocket webSocket) {
+        logger.info("CONNECTED");
+        ....
+    }
+    ....
+}							</code></pre>
+						</div>
+			            <div class="container fragment">
+			            <p class="small" style="text-align: left; margin-left: 10%">use an <code>HttpClient</code> to create a <code>WebSocket</code></p>
+			            <pre class="small" style="width: 70%; margin: 0 auto">
+			            	<code>
+WebSocket webSocket = httpClient.newWebSocketBuilder()
+        .buildAsync(URI.create("ws://demos.kaazing.com/echo"),
+                new EchoListener(executor)).join();
+
+webSocket.sendClose(WebSocket.NORMAL_CLOSURE, "ok").thenRun(() -> logger.info("Sent close")).join();</code>
+			            </pre>
+			            </div>
+			        </section>
+					<!-- Slide 9.6 - switch statement -->
+			        <section>
+			           <h2>Old Switch statement</h2>
+			           <pre class="x-small" style="width: 55%"><code>
+jshell> String getRomanNumber(int value){
+    String romanValue = "";
+    switch(value){
+       case 0: romanValue = "nulla";
+             break;
+       case 1: romanValue = "I";
+             break;
+       case 2: romanValue = "II";
+             break;
+       case 3: romanValue = "III";
+             break;
+       case 4: romanValue = "IV";
+             break;
+       case 5: romanValue = "V";
+             break;
+       case 6: romanValue = "VI";
+             break;
+       case 7: romanValue = "VII";
+             break;
+       case 8: romanValue = "VIII";
+             break;
+       case 9: romanValue = "IX";
+             break;
+       case 10: romanValue = "X";
+             break;
+       default: System.out.printf("Out of range value: %d %n", value);
+                romanValue = "N/A";
+             break;
+    }
+   return romanValue;
+}</code></pre>
+			        </section>
+			        <!-- Slide 9.6.1 - New switch statement -->
+			        <section>
+			           <h3>New Switch statement - <span style="color: orange">Java 12</span></h3>
+			           <pre class="fragment small" style="width: 70%"><code>mohamed_taman:~$ jshell --enable-preview</code></pre>
+			           <pre class="small fragment" style="width: 70%"><code>
+String getRomanNumber(int value){
+    String romanValue = "";
+    switch(value){
+       case 0 -> romanValue = "nulla";
+       case 1 -> romanValue = "I";
+       case 2 -> romanValue = "II";
+       case 3 -> romanValue = "III";
+       case 4 -> romanValue = "IV";
+       case 5 -> romanValue = "V";
+       case 6 -> romanValue = "VI";
+       case 7 -> romanValue = "VII";
+       case 8 -> romanValue = "VIII";
+       case 9 -> romanValue = "IX";
+       case 10 -> romanValue = "X";
+       default -> {
+              System.out.printf("Out of range value: %d %n", value);
+              romanValue = "N/A";
+        }
+    }
+    return romanValue;
+}</code></pre>
+			        </section>
+			        <!-- Slide 9.6.2 - new switch expression -->
+			        <section>
+			           <h3>New Switch expression</h3>
+			           <pre class="small" style="width: 70%"><code>
+String getRomanNumber(int value){
+    return switch(value){
+       case 0 -> "nulla";
+       case 1 -> "I";
+       case 2 -> "II";
+       case 3 -> "III";
+       case 4 -> "IV";
+       case 5 -> "V";
+       case 6 -> "VI";
+       case 7 -> "VII";
+       case 8 -> "VIII";
+       case 9 -> "IX";
+       case 10 -> "X";
+       default -> throw new IllegalStateException("Out of range value: " + value);
+    };
+}</code></pre>
+			        </section>
+					<!-- Slide 9.6.3 - Multi-case switch statement -->
+			        <section>
+			        	<h3>Multiple comma-separated labels in a single switch case</h3>
+			            <div style="width: 105%; margin: 0 auto;">
+                         	<div class="twocol fragment fade-right">
+                         		<pre class="small" style="width: 95%"><code>
+jshell>String getOddOrEvenNumber(int value){
+    String kind = "N/A";
+    switch(value){
+       case 0: kind = "Zero"; break;
+       case 1:
+       case 3:
+       case 5:
+       case 7:
+       case 9: kind = "Odd"; break;
+       case 2:
+       case 4:
+       case 6:
+       case 8:
+       case 10: kind = "Even"; break;
+       default: System.out.printf("Out of range: %d %n", value);
+    }
+   return kind;
+}</code></pre>
+							<p style="font-size: 50%" >For more here is my <strong>tutorial article</strong> @IBM Developer:<br/>
+			           				<a href="https://developer.ibm.com/tutorials/java-theory-and-practice-6/">Effective use of the new switch statement and expression in Java SE 12</a>
+			            		</p> 
+							</div>
+							<div class="twocol fragment fade-down">
+                       			<pre class="small" style="width: 99%"><code>
+jshell> var kind = switch(value){
+   ...> case 0 -> "Zero";
+   ...> case 1, 3, 5, 7, 9 -> "Odd";
+   ...> case 2, 4, 6, 8, 10 -> "Even";
+   ...> default -> throw new IllegalStateException("Out of range: " + value);
+   ...> };</code></pre>
+								<img src="/media/img/image_04.gif" style="width: 80%; border-color: transparent;"></img>
+							</div>
+                    	</div>
+			        </section>
+		        </section>
+
+		        <!--
+		          === Slide 10 - New language APIs ==============================================================
+		        -->
+		        <section>
+		        	<!-- Slide 10.1 - New language APIs -->
+			        <section>
+			        	<p style="font-size: 300%">👓</p>
+			           <h1 class="fragment"> New language APIs</h1>
+			        </section>
+		           <!-- Slide 10.2.1 - String class new enhancements 1 -->
+			        <section>
+			           <h2><code>String</code> class new enhancements</h2>
+			           <ul>
+			           	<li class="fragment"><code>String repeat(int)</code> - <span style="color: orange">Java 11</span>
+			           		<pre class="fragment" style="width: 100%"><code>jshell> "no ".repeat(14).trim().concat(", Batman!")
+$1 ==> "no no no no no no no no no no no no no no, Batman!</code></pre>
+			           	</li>
+			           	<li class="fragment"><code>boolean isBlank()</code> - <span style="color: orange">Java 11</span>
+			           		<pre class="small" style="width: 100%"><code>jshell>var blankText = "      "
+blankText ==> "      "
+
+jshell>blankText.trim().length() == 0
+$2 ==> true
+
+jshell>blankText.isBlank()
+$3 ==> true</code></pre>
+			           	</li>
+			           </ul>
+			        </section>
+			        <!-- Slide 10.2.2 - String class new enhancements 2 -->
+			        <section>
+			           <ul>
+			           	<li><code>String stripLeading()</code> - <span style="color: orange">Java 11</span></li>
+			           	<li><code>String stripTrailing()</code> - <span style="color: orange">Java 11</span></li>
+			           	<li><code>String strip()</code> - <span style="color: orange">Java 11</span>
+			           		<pre class="fragment small" style="width: 100%"><code>jshell>var textWithSpaces = "\n \t      Text \u2005"
+textWithSpaces ==> "\n \t      Text  "
+
+jshell>textWithSpaces.trim()
+$4 ==> "Text  "
+
+jshell>textWithSpaces.strip()
+$5 ==> "Text"</code></pre>
+			           	</li>
+			           	<li class="fragment"><code>Stream lines()</code> - <span style="color: orange">Java 11</span>
+							<pre class="small" style="width: 100%"><code>jshell> "\nOne\nTwo\nThree\nFour".lines().forEach(System.out::println)
+
+One
+Two
+Three
+Four</code></pre>
+			           	 </li>
+			            </ul>
+			        </section>
+			        <!-- Slide 10.2.3 - String class new enhancements 3 -->
+			        <section>
+			           <ul>
+						<li><code>String indent(int)</code> - <span style="color: orange">Java 12</span>
+							<pre class="fragment small" style="width: 100%"><code>jshell> "\nOne\nTwo\nThree\nFour".indent(5).indent(-2).lines().forEach(System.out::println)
+
+... One
+... Two
+... Three
+... Four</code></pre>
+						</li>
+			           	<li class="fragment"><code>String transform(Function)</code> - <span style="color: orange">Java 12</span>
+			           		<pre class="small" style="width: 100%"><code>jshell> var text = "Text with*out *some* *asterisks"
+text ==> "Text wi*th *some* * asterisks"
+
+jshell> text.transform(String::toUpperCase)
+   ...>     .transform(s -> s.replaceAll("\\*", ""))
+   ...>     .transform(s -> s.split(" "))
+
+$1 ==> String[4] { "TEXT", "WITHOUT", "SOME", "ASTERISKS" }
+</code></pre>
+			           	</li>
+			           </ul>
+			           <p class="x-small fragment">For more here is my <strong>tutorial article</strong> at IBM Developer:<br/>
+		           			<a href="https://developer.ibm.com/tutorials/java-theory-and-practice-1/">Java theory and practice: Explore new Java SE 11 and 12 APIs and language features</a>
+		            	</p>
+			        </section>
+					 <!-- Slide 10.3 - Compact Number Format -->
+			        <section>
+			           <h2>Compact number format with <code>CompactNumberFormat</code> - <span style="color: orange">Java 12</span></h2>
+			           <p class="x-small">
+			           	 refers to the representation of a number in a short or human-readable form. For example, in the en_US locale, 1000 can be formatted as “1K” and 1000000 as “1M”.
+			           </p>
+			           <div class="fragment" data-markdown style="width: 80%; margin: 0 auto">
+	                        <script type="text/template">
+				            ````
+				            jshell> import java.text.NumberFormat
+				            
+				            jshell>NumberFormat
+				            	.getCompactNumberInstance(Locale.US, NumberFormat.Style.SHORT)
+				            	.format(10000)
+				            
+				            $1 ==> "10K"
+				            ````
+				        	</script>
+			        	</div>
+			        	
+		            	<p class="x-small fragment">For more here is my <strong>tutorial article</strong> at IBM Developer:<br/>
+		           			<a href="https://developer.ibm.com/tutorials/java-theory-and-practice-1/">Java theory and practice: Explore new Java SE 11 and 12 APIs and language features</a>
+		            	</p>
+			        </section>
+					 <!-- Slide 10.4 - Stream: Teeing collector -->
+			        <section>
+			           <h2>Streams: The <code>Teeing</code> Collectors method - <span style="color: orange">Java 12</span></h2>
+			           <div class="fragment" data-markdown style="width: 90%; margin: 0 auto">
+	                        <script type="text/template">
+				            ````
+				            jshell> var ints =  Stream.of(1,2,3,4,5,6,7)
+				            
+				            jshell> ints.collect(   
+				            ...>     Collectors.teeing(
+				            ...>          Collectors.summingInt(Integer::valueOf),
+				            ...>          Collectors.counting(),
+				            ...>          (sum, count) -> sum/count )
+				            ...>    )              
+				            ...>
+				            $1 ==> 4
+				            ````
+				        	</script>
+			        	</div>
+			        </section>
+			         <!-- Slide 10.5 - Comparing 2 files -->
+			        <section>
+			           <h2>Comparing 2 files - <span style="color: orange">Java 12</span></h2>
+			           <p>what could we do with case such as this:</p>
+			           <p>is <span style="font-size: 150%">📄</span> 1 == <span style="font-size: 150%">📄</span> 2 ??</p>
+			           <br/>
+			           <div class="fragment" data-markdown style="width: 90%; margin: 0 auto">
+	                        <script type="text/template">
+				            ````
+
+				            Files.mismatch(Path.of("/file 1"),Path.of("/file 2"));
+
+
+				            ````
+				        	</script>
+			        	</div>
+			        	<br/>
+			        	<p class="fragment">
+			        		It will compare all bytes and return <strong>-1</strong> if match, otherwise will return <strong>the location of the first mismatching byte</strong>.
+			        	</p>
+			        </section>
+		        </section>
+
+		        <!--
+		          === Slide 11 - Security and improvements ====================================================
+		        -->
+		        <section>
+		           <!-- Slide 11.1 - Security and improvements -->
+			        <section>
+			           <h1>🛡 </br> Security & </br>Other Improvements</h1>
+			        </section>
+			        <!-- Slide 11.2 - Library Improvements -->
+			        <section>
+			            <h2>Improved container <img src="/media/img/docker_container.png" style="width: 5%;height: 5%;border-color: transparent; background-color: transparent; "> awareness</h2>
+			            <div style="width: 110%; margin: 0 auto;">
+                        	<div class="twocol" style="width: 52%;height: 50%;">
+	                        	<ul class="small">
+	                        		<li class="fragment fade-in-then-semi-out">Since <span style="color: orange">Java 10</span>, Java is able to detect <strong>containers</strong>.</li>
+	                        		<li class="fragment fade-in-then-semi-out">Query container instead of <em>host OS</em>.</li>
+	                        		<li class="fragment fade-in-then-semi-out">Remote debugger, can attach to Java process.</li>
+	                        		<li class="fragment">For now works only for Linux & Docker on Linux.</li>
+	                        	</ul>
+		                        	<div class="fragment fade-in">
+			                        	<p class="x-small" style="text-align: left;">
+			                        		<strong>To control the JVM:</strong><br/>
+			                        		<code>-XX:ActiveProcessorCount=&lt;n></code><br/>  
+			                        		<code>-XX:InitialRAMPercentage</code><br/>
+			                        		<code>-XX:MinRAMPercentage</code><br/>
+			                        		<code>-XX:MaxRAMPercentage</code>
+		                        		</p>
+	                        	</div>
+                         	</div>
+                         	<div class="twocol">
+                         		<img src="/media/img/image_03.png" style="width: 50%;height: 50%;border-color: transparent; background-color: transparent; ">
+                         	</div>
+                        </div>
+			        </section>
+		           	<!-- Slide 11.2 - Library Improvements -->
+			        <section>
+			            <h2>G1GC Garbage Collection 🧻 Improvements</h2>
+			            <p>
+			            <div style="width: 100%; margin: 0 auto;">
+                        	<div class="twocol" style="width: 45%">
+	                            <p style="text-align: left;font-weight: bolder;"> Since <span style="color: orange">Java 9</span> Garbage First Garbage Collector <strong>(G1GC)</strong> was made the default GC.</p>
+	                            <ul class="small">
+	                            	<li>Incremental GC.</li>
+	                            	<li>Parallel marking.</li>
+	                            	<li>Designed for large heaps.</li>
+	                            	<li>Tunable pause times.</li>
+	                            	<li>It is slightly CPU intensive.</li>
+	                            	<li class="fragment"><span style="color: orange">Java 9:</span> Serial full GC.</li>
+	                            </ul>
+                        	</div>
+                        	<div class="twocol" style="width: 55%">
+                        		<ul>
+	                            	<li class="fragment">
+	                            		<span style="color: orange">Java 10:</span> Parallel full GC.
+	                            		<ul class="small">
+	                            			<li><code>-XX:ParallelGCThreads</code> - to control number of CPU threads</li>
+	                            		</ul>
+	                            	</li>
+	                            	<li class="fragment">
+	                            		<span style="color: orange">Java 11:</span> G1GC is more faster by 60%.
+	                            	</li>
+	                            	<li class="fragment">
+	                            		<span style="color: orange">Java 12:</span> Improving G1GC.
+	                            		<ul class="small">
+	                            			<li><span class="jep"><a style="color: white" href="http://openjdk.java.net/jeps/344">JEP 344:</a></span> Abortable mixed collections for G1.</li>
+	                            			<li><span class="jep"><a style="color: white" href="http://openjdk.java.net/jeps/346">JEP 346:</a></span> Promptly return unused committed memory from G1.</li>
+	                            		</ul>
+	                            	</li>
+	                            </ul>
+                        	</div>
+                    	</div>
+			        </section>
+				   	<!-- Slide 11.3 - Garbage Collection Changes -->
+			        <section>
+			        	<h2>New Garbage Collectors</h2>
+			        	<ul class="small">
+                        	<li class="fragment">
+                        		<span style="color: orange">Java 11:</span> Epsilon GC - <span class="fragment fade highlight-red">Experimental</span>.
+                        		<ul>
+                        			<li><code>-XX:+UnlockExperimentalVMOptions</code></li>
+                        			<li><code>-XX:+UseEpsilonGC</code></li>
+                        		</ul>
+                        		<br/>
+                        	</li>
+                        	<li class="fragment">
+                        		<span style="color: orange">Java 11:</span> Z GC - <span class="fragment highlight-red">Experimental</span>.
+                        		<ul>
+                        			<li>Keep pause time under 10ms.</li>
+                        			<li>No pause increase when heap increase.</li>
+                        			<li>Scale to multi-terabyte heaps.</li>
+                        			<li><code>-XX:+UnlockExperimentalVMOptions</code></li>
+                        			<li><code>-XX:+UseZGC</code></li>
+                        		</ul>
+                        		<br/>
+                        	</li>
+                        	<li class="fragment">
+                        		<span style="color: orange">Java 12:</span> Shenandoah GC - <span class="fragment highlight-red">Experimental</span>.
+                        		<ul>
+                        			<li>support of very large heaps.</li>
+                        			<li>low-pause time.</li>
+                        		</ul>
+                        	</li>
+                        </ul>
+			        </section>
+				   	<!-- Slide 11.4 - Security Improvement: TLS 1.3 -->
+			        <section>
+			            <h2>Security Improvement: TLS 1.3 - <span style="color: orange">Java 11:</span></h2>
+			            <ul>
+			            	<li><a style="color: white" href="http://openjdk.java.net/jeps/332"><span class="jep">JEP 332</span></a> introduces support for the <strong>TLS 1.3</strong>.<br/><br/>
+			            	</li>
+			            	<li class="fragment">As the JDK now supports this, although this does not extend to Datagram Transport Layer Security <strong>(DTLS)</strong>.</li>
+			            </ul>
+			        </section>
+		        </section>
+
+		        <!--
+		          === Slide 12 - APIs goes bye bye =============================================================
+		        -->
+		        <section>
+		           <!-- Slide 12.1 - farewell -->
+		           
+			        <section>
+			        	<h1>Let's farewell some APIs goes <em>bye bye</em>...</h1>
+			        	
+			        	<p class="fragment">New things come <span class="fragment">... and sometimes old things have to go <span style="font-size: 200%">👐</span> </span></p>
+			        </section>
+		            <!-- Slide 12.2 - Why I should know about them? -->
+			        <section>
+			           <h1>Why I should know <u style="color: yellow">about them</u> ?</h1>
+			        </section>
+					<!-- Slide 12.3 - Removed Methods -->
+			        <section>
+			           <h2>Removed Methods</h2>
+					        <ul>
+					        	<li class="fragment"><span style="color: orange">Java 11:</span> <strong>Thread</strong> <span class="fragment fade-in">- <s>destroy()</s>, <s>stop(Throwable)</s></span></li>
+								<li class="fragment"><span style="color: orange">Java 11:</span> <strong>System, Runtime</strong><span class="fragment fade-in"> - <s>runFinalizerOnExit()</s></span></li>
+								<li class="fragment"><span style="color: orange">Java 11:</span> <strong>SecurityManager</strong> <span class="fragment fade-in">- <s>checkAwtEventQueueAccess()</s>, <s>checkSystemClipboardAccess()</s>, <s>checkMemberAccess()</s>, <s>checkTopLevelWindow()</s></span></li>
+								<li class="fragment"><span style="color: orange">Java 12:</span> <strong>FileInputStream, FileOutputStream</strong> <span class="fragment fade-in">- <s>finalize()</s>, <s>stop(Throwable)</s></span></li>
+								<li class="fragment"><span style="color: orange">Java 12:</span> <strong>com.sun.awt.SecurityWarning</strong> <span class="fragment fade-in">- is removed.</span></li>
+								
+					        </ul>
+			        </section>
+					<!-- Slide 12.4 - Removed Enterprise APIs -->
+			        <section>
+			           <h2>Removed Enterprise APIs - <span style="color: orange">Java 11:</span></h2>
+			           <h4><code>java.se.ee</code> - related modules</h4>
+				        <div class="fragment">
+					        <p>The affected modules are:</p>
+					        <ol>
+					        	<li><code>corba</code></li>
+								<li><code>transaction</code></li>
+								<li><code>activation</code></li>
+								<li><code>xml.bind</code></li>
+								<li><code>xml.ws</code></li>
+								<li><code>xml.ws.annotation</code></li>
+					        </ol>
+				        </div>
+			        </section>
+					<!-- Slide 12.5 - JavaFX -->
+			        <section>
+			        	<h2>Where is JavaFx has gone?</h2>
+			            <ul>
+				        	<li class="fragment">JavaFX is not part of JDK anymore <span class="fragment">& moved to <strong>OpenJFX</strong> since <span style="color: orange">Java 11</span>.</span></li>
+				            <li class="fragment fade-down"> JavaFX maven dependency
+				            	<pre class="small"><code><dependency>
+  <groupId>org.openjfx</groupId>
+  <artifactId>javafx-controls</artifactId>
+  <version>12.0.1</version>
+</dependency></code></pre>
+				           </li>
+				           <li class="fragment fade-down"> Run JavaFX -- For more <a href="https://openjfx.io/openjfx-docs/">Getting Started with JavaFX 12</a>
+				            	<pre class="small"><code><plugin>
+  <groupId>org.openjfx</groupId>
+  <artifactId>javafx-maven-plugin</artifactId>
+  <version>0.0.2</version>
+  <configuration>
+    <mainClass>HelloFX</mainClass>
+  </configuration>
+</plugin></code></pre>
+				           </li>
+			           </ul>
+			        </section>
+					<!-- Slide 12.6 - Removed & Deprecated Technologies TODO- could use tabular structure -->
+					<section>
+				        <h2>Removed & Deprecated Technologies & tools</h2>
+					        <ul>
+					        	<li class="fragment fade-right"><span style="color: orange">Java 10:</span><strong> policytool tool</strong>&nbsp;&nbsp;&nbsp;&nbsp; - <span style="color: red">Removed</span></li>
+					        	<li class="fragment fade-right"><span style="color: orange">Java 10:</span><strong> javah tool</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <span style="color: red">Removed</span>&nbsp;&nbsp;&nbsp; - javac -h &lt;dir></li>
+								<li class="fragment fade-right"><span style="color: orange">Java 10:</span><strong> -X:prof flag</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <span style="color: red">Removed</span>&nbsp;&nbsp;&nbsp;&nbsp; - jmap or VisualVM</li>
+					        	<li class="fragment fade-right"><span style="color: orange">Java 11:</span><strong> Java Applet</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <span style="color: red">Removed</span>&nbsp;&nbsp;&nbsp;&nbsp; - Java 8 is still supported</li>
+								<li class="fragment fade-right"><span style="color: orange">Java 11:</span><strong> Java WebStart</strong>&nbsp;&nbsp;&nbsp; - <span style="color: red">Removed</span>&nbsp;&nbsp;&nbsp;&nbsp; - jlink, jpackager</li>
+								<li class="fragment fade-right"><span style="color: orange">Java 11:</span><strong> Nashorn engine</strong>&nbsp;&nbsp; - <span style="color: gray">Deprecated</span>&nbsp; - use <em>Graal.js</em> with <em>GraalVM</em>, Project Detroit (Google V8)</li>
+					        </ul>
+			        </section>
+		        </section>
+		        <!--
+		          === Slide 13 - Important Tools ===============================================================
+		        -->
+		        <section>
+		           <!-- Slide 13.1 - Important Tools -->
+					<section>
+						<h1>Important Tools</h1>
+					</section>
+		            <!-- Slide 13.2.1 - Micro-benchmarking -->
+					<section>
+			           <h2>Micro-benchmarking with JMH - <span style="color: orange">Java 12</span></h2>
+			           <h3><strong>JMH:</strong> Java Micro-benchmarking Harness 📊</h3>
+			           <br/>
+			           <blockquote>
+			           	 Micro-benchmarking is a performance-oriented practice that can steer implementation choices in code.
+			           </blockquote>
+			           <br/>
+			           <p style="text-align: left;" class="fragment small">JMH allows you to write a simple Java class containing several methods that can be turned into a micro-benchmark using annotations. Many configuration options for the benchmark can also be configured through annotations.</p>
+			        </section>
+			 	   <!-- Slide 13.2.2 - JMH Micro-bench tools. -->
+					<section>
+			            <h3>JMH Example</h3>
+			            <pre class="small"><code>import org.openjdk.jmh.annotations.Benchmark;
+import org.openjdk.jmh.runner.*;
+import org.openjdk.jmh.runner.options.*;
+
+public class MyBenchmark {
+
+  @Benchmark
+  public void testMethod() {
+     int a = 1;
+     int b = 2;
+     int sum = a + b;
+  }
+
+  public static void main(String[] args) throws RunnerException {
+    Options opt = new OptionsBuilder()
+            .include(MyBenchmark.class.getSimpleName())
+            .forks(1)
+            .build();
+
+    new Runner(opt).run();
+  }}						</code></pre>
+						<p class="x-small">For more visit official OpenJDK website:<br/>
+		           			<a href="https://openjdk.java.net/projects/code-tools/jmh/">OpenJDK JMH tool</a>, and this is a good tutorial
+		           			<a href="http://tutorials.jenkov.com/java-performance/jmh.html">JMH - Java Microbenchmark Harness</a>
+		            	</p>
+			        </section>
+			 	   <!-- Slide 13.3 - VisualVM tool -->
+					<section>
+			           <img src="/media/img/visualvm_logo.png" style="width: 40%;border-color: transparent; background-color: transparent; ">
+			           <h3>All-in-One Java Troubleshooting Tool - <span style="color: orange">Java 11</span></h3>
+			           <br/>
+			           <blockquote class="fragment">
+			           	 VisualVM is a visual tool integrating command line JDK tools and lightweight profiling capabilities.
+Designed for both development and production time use.
+			            </blockquote>
+			            <br/>
+			            <p class="small fragment">For more visit VisualVM official website:<br/>
+		           			<a href="https://visualvm.github.io/index.html">https://visualvm.github.io/index.html</a>
+		            	</p>
+			        </section>
+			 	   <!-- Slide 13.4 - Flight Recorder tool -->
+					<section>
+			        	<h2>Flight Recorder ⏺ - <span style="color: orange">Java 11</span></h2>
+			            <blockquote>
+			           	 Flight Recorder is a low-overhead, data-collection framework for the JVM.
+			            </blockquote>
+			            <br/>
+			            <ul>
+			            	<li class="fragment fade-down">Prior to <span style="color: orange">JDK 11</span>, Flight Recorder was a commercial feature in the Oracle JDK binary.<br/><br/></li>
+			            	<li class="fragment fade-down">Oracle is eliminates the functional differences between the Oracle JDK & one built from OpenJDK source code.<br/><br/></li>
+			            	<li class="fragment fade-down">This feature open sourced to the OpenJDK through<a style="color: white" href="http://openjdk.java.net/jeps/328"><span class="jep">JEP 328</span></a>.</li>
+			            </ul>
+			        </section>
+		        </section>
+		        
+		        <!--
+		          === Slide Y - Be Awesome Java Developer ======================================================
+		          Need to be clear some how opacity = 0
+		        -->
+				<section data-background-video="media/video/BeAwesomeJavaDeveloper.mp4"> 
+				</section>
+
+				<!--
+		          === Slide X - Questions ======================================================================
+		        -->
+
+		        <section>
+		           <h4>Presentation  @SlideShare & Code @My <span class="fragment"><img src="/media/img/github.png" style="width: 100px;border-color: transparent; background-color: transparent; "/> account.</span></h4>
+		           <img class="fragment fade-down" src="media/img/question.jpg" alt="Any Questions????"/>
+		        </section>
+
+		    </div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+		    // Full list of configuration options available at:
+		    // https://github.com/hakimel/reveal.js#configuration
+		    Reveal.initialize({
+		                          // Display controls in the bottom right corner
+		                          controls: true,
+
+		                          // Display a presentation progress bar
+		                          progress: true,
+
+		                          // Display the page number of the current slide
+		                          slideNumber: true,
+
+		                          // Push each slide change to the browser history
+		                          history: true,
+
+		                          // Enable keyboard shortcuts for navigation
+		                          keyboard: true,
+
+		                          // Enable the slide overview mode
+		                          overview: true,
+
+		                          // Vertical centering of slides
+		                          center: true,
+
+		                          // Enables touch navigation on devices with touch input
+		                          touch: true,
+
+		                          // Loop the presentation
+		                          loop: false,
+
+		                          // Change the presentation direction to be RTL
+		                          rtl: false,
+
+		                          // Turns fragments on and off globally
+		                          fragments: true,
+
+		                          // Flags if the presentation is running in an embedded mode,
+		                          // i.e. contained within a limited portion of the screen
+		                          embedded: false,
+
+		                          // Flags if we should show a help overlay when the questionmark
+		                          // key is pressed
+		                          help: true,
+
+		                          // Number of milliseconds between automatically proceeding to the
+		                          // next slide, disabled when set to 0, this value can be overwritten
+		                          // by using a data-autoslide attribute on your slides
+		                          autoSlide: 0,
+
+		                          // Stop auto-sliding after user input
+		                          autoSlideStoppable: true,
+
+		                          // Enable slide navigation via mouse wheel
+		                          mouseWheel: true,
+
+		                          // Hides the address bar on mobile devices
+		                          hideAddressBar: true,
+
+		                          // Opens links in an iframe preview overlay
+		                          previewLinks: false,
+
+		                          // Transition style
+		                          transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+		                          // Transition speed
+		                          transitionSpeed: 'default', // default/fast/slow
+
+		                          // Transition style for full page slide backgrounds
+		                          backgroundTransition: 'default', // none/fade/slide/convex/concave/zoom
+
+		                          // Number of slides away from the current that are visible
+		                          viewDistance: 3,
+
+		                          // Parallax background image
+		                          parallaxBackgroundImage: 'media/img/coffee.jpg', // e.g. "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'"
+
+		                          // Parallax background size
+		                          parallaxBackgroundSize: '2100px 1200px', // CSS syntax, e.g. "2100px 900px"
+
+		                          // Amount to move parallax background (horizontal and vertical) on slide change
+		                          // Number, e.g. 100
+		                          parallaxBackgroundHorizontal: '',
+		                          parallaxBackgroundVertical: '',
+
+		                          // The "normal" size of the presentation, aspect ratio will be preserved
+		                          // when the presentation is scaled to fit different resolutions. Can be
+		                          // specified using percentage units.
+		                          width: 1280,
+		                          height: 720,
+
+		                          // Factor of the display size that should remain empty around the content
+		                          margin: 0.05,
+
+		                          // Bounds for smallest/largest possible scale to apply to content
+		                          minScale: 0.2,
+		                          maxScale: 1.5,
+
+		                          // Ctrl + Mouse-Click ==> Zoom in
+		                          zoomKey: 'ctrl',
+
+		                          // Optional reveal.js plugins
+		                          dependencies: [
+		                              {
+		                                  src: 'lib/js/classList.js', condition: function () {
+		                                  return !document.body.classList;
+		                              }
+		                              },
+		                              {
+		                                  src: 'plugin/markdown/marked.js', condition: function () {
+		                                  return !!document.querySelector('[data-markdown]');
+		                              }
+		                              },
+		                              {
+		                                  src: 'plugin/markdown/markdown.js', condition: function () {
+		                                  return !!document.querySelector('[data-markdown]');
+		                              }
+		                              },
+		                              {
+		                                  src: 'plugin/highlight/highlight.js', async: true, condition: function () {
+		                                  return true;
+		                              }, callback: function () {
+		                                  hljs.initHighlightingOnLoad();
+		                              }
+		                              },
+		                              {src: 'plugin/zoom-js/zoom.js', async: true},
+		                              {src: 'plugin/notes/notes.js', async: true}
+		                          ]
+		                      });
+		</script>
+
+		<script src="js/zepto.min.js"></script>
+		<script>
+		    Zepto(function ($) {
+
+		        var tableOfContents = $('#table-of-contents');
+		        var tableList = $('<ol />')
+
+		        $('.toc-element').each(function (index) {
+		            var _self = $(this),
+		                    hash = '#/' + _self.closest('section').index();
+
+		            if (_self.text()) {
+		                tableList.append([
+		                                     '<li>',
+		                                     //    '<a href="' + hash + '">',
+		                                     _self.text(),
+		                                     //'</a>',
+		                                     '</li>'
+		                                 ].join(''));
+		            }
+
+		        });
+
+		        tableOfContents.html(tableList);
+		    });
+		</script>
+	</body>
+</html>
