@@ -46,11 +46,11 @@
         -->
       
 		<div style="position: absolute; top: 5px; z-index: 6; right: 0; margin-right: 10px">
-        	<img src="media/img/logos/O-Groundbreakers-Logo.png" width="300" height="100" alt="Riga Dev Days 2019" />
-        	<img src="media/img/logos/Java Champoins.jpeg" width="100" height="100" alt="Java Champions" />
+        	<img src="media/img/logos/O-Groundbreakers-Logo.png" width="220" height="60" alt="Oracle Groundbreakers Ambassador" />
+        	<img src="media/img/logos/Java Champoins.jpeg" width="60" height="60" alt="Java Champions" />
     	</div>
     	<div style="position: absolute; top: 5px; z-index: 6; left: 0; margin-left: 10px">
-        <img src="media/img/logos/rdd2019-logo.png" width="200" height="80" alt="Riga Dev Days 2019" />
+        <img src="media/img/logos/Devtech-logo.png" width="60" height="60" alt="Devtech d.o.o" />
     	</div>
 
 		<!-- Slides -->
@@ -103,14 +103,15 @@
 		                <div class="container" style="font-size: .70em;">
 			                <ul>
 			                	<li class="fragment fade-down"><strong>Sr. Enterprise Architect</strong><br/>
-									Works for Voyego by Comtrade, work & lives in Beograd, Serbia.<em>Originally Egyptian</em>.<br/><br/>
+									Works for Devtech & lives in Beograd, Serbia.<em>Originally Egyptian</em>.<br/><br/>
 			                	</li>
 			                	<li class="fragment fade-down">
 			                		A <strong> Java Champion</strong>, <strong>Oracle Groundbreakers Ambassador</strong>, Web / AWS / Spring Cloud / Mobile / Big Data / Cloud / Blockchain / DevOps, JCP, <u>2013 - 2015</u> Duke Award winner 3 times, <u>2013</u> JCP award winner, International Speaker & Author.<br/><br/>
 			                	</li>
 			                	</ul>
-		                		<table class="fragment fade-down" style="width: 70%; height: 70%">
+		                		<table class="fragment fade-down" style="width: 75%; height: 75%">
 		                        	<tr>
+		                        		<td style="vertical-align: middle; padding-right: 5"><img data-src="media/img/Oracle.png" style="background-color: transparent; border-color: transparent; width: 350px;margin: 0px 0px;"/></td>
 		                        		<td style="vertical-align: middle; padding-right: 5"><img data-src="media/img/infoQ.jpg" style="background-color: transparent; border-color: transparent; width: 200px;margin: 0px 0px;"/></td>
 		                        		<td style="vertical-align: middle; padding-right: 5"><img data-src="media/img/IBM Developer.jpeg" style="background-color: transparent; border-color: transparent; width: 200px;margin: 0px 0px;"/></td>
 		                        		<td style="vertical-align: middle; padding-right: 5"><img data-src="media/img/B03998_JavaFX 8 Essentials.jpg" style="background-color: transparent; border-color: transparent; width: 400px;margin: 0px 0px;"/></td>
@@ -327,11 +328,11 @@
 	                        <script type="text/template">
 	                            #### We have a program like this:
 	                            ````
-	                            public class HelloWorld {      
-	                            	public static void main(String[] args) {
-	                            		System.out.println("Hello Riga 🧡 Developers World");
-	                            	}
-	                            }
+	                            public class HelloWorld {
+	                                public static void main(String[] args) {
+                            	       System.out.println("Hello Devtech 🧡 Developers");
+                            	    }
+                            	}
 	                            ````
 	                            <!-- .element: class="small" -->
 
@@ -344,7 +345,7 @@
 	                            mohamed_taman$ javac HelloWorld.java
 
 	                            mohamed_taman$ java HelloWorld
-	                            Hello Riga 🧡 Developers World
+	                            Hello Devtech 🧡 Developers
 	                            ````
 	                            <!-- .element: class="small" -->
 	                        </script>
@@ -360,7 +361,7 @@
 
 	                            ````
 	                            mohamed_taman$ java HelloWorld.java
-	                            Hello Riga 🧡 Developers World
+	                            Hello Devtech 🧡 Developers
 	                            ````
                         	</script>
                     	</div>
@@ -477,6 +478,7 @@
 				            ./Greater.java
 				            ./dirlist
 				            ````
+				             <!-- .element: class="small" -->
 				        	</script>
 			        	</div>
 			        </section>
@@ -485,7 +487,7 @@
 			            <h2>HTTP & WebSocket Client module</h2>
 			            <h5>The evolution of <code>HttpClient</code> and <code>WebSocket</code> API</h5>
 			            <br/>
-			            <ul class="small">
+			            <ul class="x-small">
 				           	<li class="fragment">The latest <code>HttpClient</code> and <code>WebSocket</code> APIs originally shipped with <span style="color: orange">JDK 9</span> under the Java Enhancement Proposal <span class="jep">JEP 110</span> as part of an incubator module named <code>jdk.incubator.httpclient</code>.<br/><br/></li> 
 				           	<li class="fragment">They were re-incubated again in <span style="color: orange">JDK 10</span>, but finally became standardized in a module named <code>java.net.http</code> and brought into the mainstream in <span style="color: orange">JDK 11</span> under <span class="jep">JEP 321</span>.<br/><br/></li>
 				           	<li class="fragment">This API provides a high-level client interface to HTTP (<em>versions 1.1 and 2</em>) and low-level client interfaces for the WebSocket API: <code>HttpClient</code>, <code>HttpRequest</code>, <code>HttpResponse</code>, and <code>WebSocket</code>.</li>
@@ -498,8 +500,7 @@
 			            <h2>HTTP Client module</h2>
 			            <h4>Demonstrating how all three APIs work together</h4>
 			            <pre class="fragment" style="width: 80%; margin: 0 auto">
-			            	<code>
-var client = HttpClient.newHttpClient();
+			            	<code>var client = HttpClient.newHttpClient();
 
 var request = HttpRequest.newBuilder()
             .uri(create("https://postman-echo.com/get/"))
@@ -508,8 +509,7 @@ var request = HttpRequest.newBuilder()
 client.sendAsync(request, ofString())
       .thenApply(HttpResponse::body)
       .thenAccept(out::println)
-      .join();
-			            	</code></pre>
+      .join();				</code></pre>
 			            <p class="x-small fragment">For more here is my <strong>tutorial article</strong> at IBM Developer:<br/>
 		           			<a href="https://developer.ibm.com/tutorials/java-theory-and-practice-3/">Java theory and practice: Explore the new Java SE 11 HTTP Client and WebSocket APIs</a>
 		            	</p>
@@ -532,8 +532,7 @@ client.sendAsync(request, ofString())
 			            <div class="container fragment">
 			            <p class="small" style="text-align: left; margin-left: 10%">use an <code>HttpClient</code> to create a <code>WebSocket</code></p>
 			            <pre class="small" style="width: 70%; margin: 0 auto">
-			            	<code>
-WebSocket webSocket = httpClient.newWebSocketBuilder()
+			            	<code>WebSocket webSocket = httpClient.newWebSocketBuilder()
         .buildAsync(URI.create("ws://demos.kaazing.com/echo"),
                 new EchoListener(executor)).join();
 
@@ -544,8 +543,7 @@ webSocket.sendClose(WebSocket.NORMAL_CLOSURE, "ok").thenRun(() -> logger.info("S
 					<!-- Slide 9.6 - switch statement -->
 			        <section>
 			           <h2>Old Switch statement</h2>
-			           <pre class="x-small" style="width: 55%"><code>
-jshell> String getRomanNumber(int value){
+			           <pre class="x-small" style="width: 55%"><code>jshell> String getRomanNumber(int value){
     String romanValue = "";
     switch(value){
        case 0: romanValue = "nulla";
@@ -581,8 +579,7 @@ jshell> String getRomanNumber(int value){
 			        <section>
 			           <h3>New Switch statement - <span style="color: orange">Java 12</span></h3>
 			           <pre class="fragment small" style="width: 70%"><code>mohamed_taman:~$ jshell --enable-preview</code></pre>
-			           <pre class="small fragment" style="width: 70%"><code>
-String getRomanNumber(int value){
+			           <pre class="small fragment" style="width: 70%"><code>String getRomanNumber(int value){
     String romanValue = "";
     switch(value){
        case 0 -> romanValue = "nulla";
@@ -607,8 +604,7 @@ String getRomanNumber(int value){
 			        <!-- Slide 9.6.2 - new switch expression -->
 			        <section>
 			           <h3>New Switch expression</h3>
-			           <pre class="small" style="width: 70%"><code>
-String getRomanNumber(int value){
+			           <pre class="small" style="width: 70%"><code>String getRomanNumber(int value){
     return switch(value){
        case 0 -> "nulla";
        case 1 -> "I";
@@ -630,8 +626,7 @@ String getRomanNumber(int value){
 			        	<h3>Multiple comma-separated labels in a single switch case</h3>
 			            <div style="width: 105%; margin: 0 auto;">
                          	<div class="twocol fragment fade-right">
-                         		<pre class="small" style="width: 95%"><code>
-jshell>String getOddOrEvenNumber(int value){
+                         		<pre class="small" style="width: 95%"><code>jshell> String getOddOrEvenNumber(int value){
     String kind = "N/A";
     switch(value){
        case 0: kind = "Zero"; break;
@@ -654,14 +649,13 @@ jshell>String getOddOrEvenNumber(int value){
 			            		</p> 
 							</div>
 							<div class="twocol fragment fade-down">
-                       			<pre class="small" style="width: 99%"><code>
-jshell> var kind = switch(value){
+                       			<pre class="small" style="width: 99%"><code>jshell> var kind = switch(value){
    ...> case 0 -> "Zero";
    ...> case 1, 3, 5, 7, 9 -> "Odd";
    ...> case 2, 4, 6, 8, 10 -> "Even";
    ...> default -> throw new IllegalStateException("Out of range: " + value);
    ...> };</code></pre>
-								<img src="media/img/image_04.gif" style="width: 80%; border-color: transparent;"></img>
+						<img src="media/img/image_04.gif" style="width: 80%; border-color: transparent;"></img>
 							</div>
                     	</div>
 			        </section>
@@ -837,9 +831,9 @@ $1 ==> String[4] { "TEXT", "WITHOUT", "SOME", "ASTERISKS" }
 		                        	<div class="fragment fade-in">
 			                        	<p class="x-small" style="text-align: left;">
 			                        		<strong>To control the JVM:</strong><br/>
-			                        		<code>-XX:ActiveProcessorCount=&lt;n></code><br/>  
+			                        		<code>-XX:ActiveProcessorCount=&lt;n></code> , 
 			                        		<code>-XX:InitialRAMPercentage</code><br/>
-			                        		<code>-XX:MinRAMPercentage</code><br/>
+			                        		<code>-XX:MinRAMPercentage</code> , 
 			                        		<code>-XX:MaxRAMPercentage</code>
 		                        		</p>
 	                        	</div>
@@ -1004,7 +998,7 @@ $1 ==> String[4] { "TEXT", "WITHOUT", "SOME", "ASTERISKS" }
 					        	<li class="fragment fade-right"><span style="color: orange">Java 10:</span><strong> policytool tool</strong>&nbsp;&nbsp;&nbsp;&nbsp; - <span style="color: red">Removed</span></li>
 					        	<li class="fragment fade-right"><span style="color: orange">Java 10:</span><strong> javah tool</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <span style="color: red">Removed</span>&nbsp;&nbsp;&nbsp; - javac -h &lt;dir></li>
 								<li class="fragment fade-right"><span style="color: orange">Java 10:</span><strong> -X:prof flag</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <span style="color: red">Removed</span>&nbsp;&nbsp;&nbsp;&nbsp; - jmap or VisualVM</li>
-					        	<li class="fragment fade-right"><span style="color: orange">Java 11:</span><strong> Java Applet</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <span style="color: red">Removed</span>&nbsp;&nbsp;&nbsp;&nbsp; - Java 8 is still supported</li>
+					        	<li class="fragment fade-right"><span style="color: orange">Java 11:</span><strong> Java Applet</strong>;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <span style="color: red">Removed</span>&nbsp;&nbsp;&nbsp;&nbsp; - Java 8 is still supported</li>
 								<li class="fragment fade-right"><span style="color: orange">Java 11:</span><strong> Java WebStart</strong>&nbsp;&nbsp;&nbsp; - <span style="color: red">Removed</span>&nbsp;&nbsp;&nbsp;&nbsp; - jlink, jpackager</li>
 								<li class="fragment fade-right"><span style="color: orange">Java 11:</span><strong> Nashorn engine</strong>&nbsp;&nbsp; - <span style="color: gray">Deprecated</span>&nbsp; - use <em>Graal.js</em> with <em>GraalVM</em>, Project Detroit (Google V8)</li>
 					        </ul>
