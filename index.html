@@ -345,7 +345,7 @@
 	                            ````
 	                            public class HelloWorld {
 	                                public static void main(String[] args) {
-                            	       System.out.println("Hello Bulgarian 🧡 Developers");
+                            	       System.out.println("Hello DevNexus 🧡 Developers");
                             	    }
                             	}
 	                            ````
@@ -360,7 +360,7 @@
 	                            mohamed_taman$ javac HelloWorld.java
 
 	                            mohamed_taman$ java HelloWorld
-	                            Hello Bulgarian 🧡 Developers
+	                            Hello DevNexus 🧡 Developers
 	                            ````
 	                            <!-- .element: class="small" -->
 	                        </script>
@@ -377,7 +377,7 @@
 
 	                            ````
 	                            mohamed_taman$ java HelloWorld.java
-	                            Hello Bulgarian 🧡 Developers
+	                            Hello DevNexus 🧡 Developers
 	                            ````
                         	</script>
                     	</div>
@@ -711,7 +711,7 @@ kind ==> "Even"</code></pre>
 							</div>
 							<div class="twocol fragment fade-down">
 								<p style="font-size: 80%">This is why <strong>community feedback</strong> is important, & the <strong>preview feature</strong> is great for such changes. </br></br>
-								- In <span style="color: orange">Java 14</span> switch expressions will be a standard.
+								- In <span style="color: orange">Java 14</span> switch expressions is standardized.
 								</p>
 								<img class="fragment fade-in" src="media/img/image_04.gif" style="width: 80%; border-color: transparent;"></img>
 							</div>
@@ -725,7 +725,7 @@ kind ==> "Even"</code></pre>
 				           	<h3 class="fragment">History:</h3>
 				           	<ul class="small">
 				           		<li class="fragment fade-right">This feature intended to be introduced in <span style="color: orange">Java 12</span> as <span style="text-decoration: line-through; color: red">Raw String Literals (Preview)</span>.</li>
-				           		<li class="fragment fade-right">Reintroduced as <strong>Text Blocks (Preview)</strong> in <span style="color: orange">Java 13</span>.</li>
+				           		<li class="fragment fade-right">Re-introduced as <strong>Text Blocks (Preview)</strong> in <span style="color: orange">Java 13</span>.</li>
 				           		<li class="fragment fade-right">And will continue as <strong>Text Blocks (Second Preview)</strong> in <span style="color: orange">Java 14</span>.</li>
 				           	</ul>
 				           	<div data-markdown style="width: 80%; margin: 0 auto" class="fragment fade-down">
@@ -757,6 +757,77 @@ kind ==> "Even"</code></pre>
                          	</div>
                          </div>
 			        </section>
+
+			        <!-- Slide 9.8 - Pattern matching -->
+			        <section>
+			        	<h3>Pattern Matching for <strong>instanceof</strong> (Preview) - <span style="color: orange">Java 14</span></h3>
+			        	<a class="jep" style="color: white" href="http://openjdk.java.net/jeps/305">JEP 305</a>
+			            <div style="width: 105%; margin: 0 auto;">
+                         	<div class="twocol">
+                         		<pre class="small fragment fade-down" style="width: 95%"><code>//Old Days
+if (obj instanceof String) {
+   // need to declare & cast again the object
+   String str = (String) obj; 
+   .. str.contains(..) ..
+}else{
+   .. str = ....
+}</code></pre>
+
+<pre class="small fragment fade-right" style="width: 95%"><code>//Java 14 enhancement
+if (!(obj instanceof String str)) {
+    // no need to declare str object again with casting
+    .. str.contains(..) ..
+} else {
+    .. str....
+}</code></pre>
+							</div>
+							<div class="twocol fragment fade-down">
+                       			<pre class="small" style="width: 99%"><code>//More complex examples
+if (obj instanceof String str && str.length() > 5) { .. str.contains(..) .. }
+
+if (obj instanceof String str || str.length() > 5) { .. str.contains(..) .. }</code></pre>
+						
+								<p>The use of pattern matching in <strong>instanceof</strong> should dramatically reduce the overall number of explicit casts in Java programs.</p>
+							</div>
+                    	</div>
+			        </section>
+			        <!-- Slide 9.9 - Records -->
+			        <section>
+			        	<h3>Records (Preview) - <span style="color: orange">Java 14</span></h3>
+			        	<a class="jep" style="color: white" href="http://openjdk.java.net/jeps/359">JEP 359</a>
+				        <div class="x-small fragment fade-down" style="width: 90%; text-align: left; margin-left: 5%">We need to write a lot of low-value, repetitive code to write a simple data carrier class responsibly: <code>constructors</code>, <code>accessors</code>, <code>equals()</code>, <code>hashCode()</code>, <code>toString()</code>, etc. To avoid this repetitive code, Java is planned to use record.</div>
+				        <pre class="small fragment fade-left"><code>final class Point {
+    public final int x;
+    public final int y;
+
+    public Point(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    // state-based implementations of equals, hashCode, toString
+    // nothing else</code></pre>
+    					<pre class="small fragment fade-left"><code>record Point(int x, int y) { }</code></pre>
+			        </section>
+
+			        <!-- Slide 9.10 - NPE enhancements -->
+			        <section>
+			        	<h3>Helpful NullPointerExceptions - <span style="color: orange">Java 14</span></h3>
+			        	<a class="jep" style="color: white" href="http://openjdk.java.net/jeps/358">JEP 358</a>
+			        
+				        <div class="x-small fragment fade-down" style="width: 90%; text-align: left; margin-left: 5%">Before Java 14, the JVM will print out the method, filename, and line number that caused the NPE:</div>
+				        <pre class="small fragment fade-left"><code>a.i = 99;
+
+Exception in thread "main" java.lang.NullPointerException
+                        at Prog.main(Prog.java:5)</code></pre>
+                        <div class="x-small fragment fade-down" style="width: 90%; text-align: left; margin-left: 5%">In Java 14 - Suppose an NPE occurs in this code:</div>
+    					<pre class="small fragment fade-left"><code>a.b.c.i = 99;</code></pre>
+<pre class="small fragment fade-left"><code>Exception in thread "main" java.lang.NullPointerException:
+    Cannot read field 'c' because 'a.b' is null.
+at Prog.main(Prog.java:5)</code></pre>
+			        </section>
+
+
 		        </section>
 
 		        <!--
@@ -1291,8 +1362,11 @@ Designed for both development and production time use.
 		          === Slide Y - Be Awesome Java Developer ======================================================
 		          Need to be clear some how opacity = 0
 		        -->
+		        
+		        <!--
 				<section data-background-video="media/video/BeAwesomeJavaDeveloper.mp4"> 
 				</section>
+				-->
 
 				<!--
 		          === Slide X - Questions ======================================================================
