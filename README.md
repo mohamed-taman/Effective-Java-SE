@@ -1,5 +1,5 @@
 # Effective Java SE
-## Effective Java SE 9 through 14 APIs &amp; Language features, make your life easier.
+## Effective Java SE 9 through 15 APIs &amp; Language features, make your life easier.
 
 Starting from Java SE 9+ which was a major release for the Java programming language and the Java virtual machine. Since then java works fast to cope with new technology era, and we have seen this every 6 months, Java SE 9-15 includes many changes, the library additions and the new language features we're going to look at here are all great, and they're very useful in your day-to-day work.
 
