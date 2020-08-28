@@ -349,7 +349,7 @@
 	                            ````
 	                            public class HelloWorld {
 	                                public static void main(String[] args) {
-                            	       System.out.println("Hello DevNexus 🧡 Developers");
+                            	       System.out.println("Hello Java 🧡 Developers");
                             	    }
                             	}
 	                            ````
@@ -364,7 +364,7 @@
 	                            mohamed_taman$ javac HelloWorld.java
 
 	                            mohamed_taman$ java HelloWorld
-	                            Hello DevNexus 🧡 Developers
+	                            Hello Java 🧡 Developers
 	                            ````
 	                            <!-- .element: class="small" -->
 	                        </script>
@@ -381,7 +381,7 @@
 
 	                            ````
 	                            mohamed_taman$ java HelloWorld.java
-	                            Hello DevNexus 🧡 Developers
+	                            Hello Java 🧡 Developers
 	                            ````
                         	</script>
                     	</div>
@@ -730,13 +730,15 @@ kind ==> "Even"</code></pre>
 				           	<ul class="small">
 				           		<li class="fragment fade-right">This feature intended to be introduced in <span style="color: orange">Java 12</span> as <span style="text-decoration: line-through; color: red">Raw String Literals (Preview)</span>.</li>
 				           		<li class="fragment fade-right">Re-introduced as <strong>Text Blocks (Preview)</strong> in <span style="color: orange">Java 13</span>.</li>
-				           		<li class="fragment fade-right">And will continue as <strong>Text Blocks (Second Preview)</strong> in <span style="color: orange">Java 14</span>.</li>
+				           		<li class="fragment fade-right">Continue as <strong>Text Blocks (Second Preview)</strong> in <span style="color: orange">Java 14</span>.</li>
+				           		<li class="fragment fade-right">And it is <strong>Text Blocks (Final)</strong> in <span style="color: orange">Java 15</span>.</li>
 				           	</ul>
 				           	<div data-markdown style="width: 80%; margin: 0 auto" class="fragment fade-down">
 		                        <script type="text/template">
 					            [JEP 326](http://openjdk.java.net/jeps/326)<!-- .element: class="jep" -->
 					            [JEP 355](http://openjdk.java.net/jeps/355)<!-- .element: class="jep" -->
-					            [JEP 368](http://openjdk.java.net/jeps/368)<!-- .element: class="jep" -->	            
+					            [JEP 368](http://openjdk.java.net/jeps/368)<!-- .element: class="jep" -->
+					            [JEP 378](http://openjdk.java.net/jeps/378)<!-- .element: class="jep" -->	            
 					        	</script>
 					        </div>
 				        </div>
@@ -764,8 +766,9 @@ kind ==> "Even"</code></pre>
 
 			        <!-- Slide 9.8 - Pattern matching -->
 			        <section>
-			        	<h3>Pattern Matching for <strong>instanceof</strong> (Preview) - <span style="color: orange">Java 14</span></h3>
+			        	<h3>Pattern Matching for <strong>instanceof</strong> (Preview) - <span style="color: orange">Java 14</span>, and (second preview) <span style="color: orange">Java 15</span></h3>
 			        	<a class="jep" style="color: white" href="http://openjdk.java.net/jeps/305">JEP 305</a>
+			        	<a class="jep" style="color: white" href="http://openjdk.java.net/jeps/375">JEP 375</a>
 			            <div style="width: 105%; margin: 0 auto;">
                          	<div class="twocol">
                          		<pre class="small fragment fade-down" style="width: 95%"><code>//Old Days
@@ -797,9 +800,10 @@ if (obj instanceof String str || str.length() > 5) { .. str.contains(..) .. }</c
 			        </section>
 			        <!-- Slide 9.9 - Records -->
 			        <section>
-			        	<h3>Records (Preview) - <span style="color: orange">Java 14</span></h3>
+			        	<h3>Records (Preview) - <span style="color: orange">Java 14</span>, and (Second Preview) <span style="color: orange">Java 15</span></h3>
 			        	<a class="jep" style="color: white" href="http://openjdk.java.net/jeps/359">JEP 359</a>
-				        <div class="x-small fragment fade-down" style="width: 90%; text-align: left; margin-left: 5%">We need to write a lot of low-value, repetitive code to write a simple data carrier class responsibly: <code>constructors</code>, <code>accessors</code>, <code>equals()</code>, <code>hashCode()</code>, <code>toString()</code>, etc. To avoid this repetitive code, Java is planned to use record.</div>
+			        	<a class="jep" style="color: white" href="http://openjdk.java.net/jeps/384">JEP 384</a>			    
+				        <div class="x-small fragment fade-down" style="width: 90%; text-align: left; margin-left: 5%">We need to write a lot of low-value, repetitive code to write a simple data carrier class responsibly: <code>constructors</code>, <code>accessors</code>, <code>equals()</code>, <code>hashCode()</code>, <code>toString()</code>, etc. To avoid this repetitive code, Java introduced records. In the Second preview it works well with Sealed Classes, and could be declared locally.</div>
 				        <pre class="small fragment fade-left"><code>final class Point {
     public final int x;
     public final int y;
@@ -808,7 +812,6 @@ if (obj instanceof String str || str.length() > 5) { .. str.contains(..) .. }</c
         this.x = x;
         this.y = y;
     }
-
     // state-based implementations of equals, hashCode, toString
     // nothing else</code></pre>
     					<pre class="small fragment fade-left"><code>record Point(int x, int y) { }</code></pre>
@@ -829,6 +832,28 @@ Exception in thread "main" java.lang.NullPointerException
 <pre class="small fragment fade-left"><code>Exception in thread "main" java.lang.NullPointerException:
     Cannot read field 'c' because 'a.b' is null.
 at Prog.main(Prog.java:5)</code></pre>
+			        </section>
+
+			        <!-- Slide 9.9 - Sealed Classes -->
+			        <section>
+			        	<h3>Sealed Classes (Preview) - <span style="color: orange">Java 15</span></h3>
+			        	<a class="jep" style="color: white" href="http://openjdk.java.net/jeps/360">JEP 360</a>
+				        <div class="x-small fragment fade-down" style="width: 90%; text-align: left; margin-left: 5%">It allow the author of a class or interface to control which code is responsible for implementing it. And it provide a more declarative way than access modifiers to restrict the use of a superclass.</div>
+				        <pre class="small fragment fade-left"><code>package com.example.geometry;
+
+public sealed class Shape
+    permits Circle, Rectangle, Square {...}
+
+public final class Circle extends Shape {...}
+
+public sealed class Rectangle extends Shape 
+    permits TransparentRectangle, FilledRectangle {...}
+
+public final class TransparentRectangle extends Rectangle {...}
+
+public final class FilledRectangle extends Rectangle {...}
+
+public non-sealed class Square extends Shape {...}</code></pre>
 			        </section>
 
 
@@ -1186,8 +1211,15 @@ true
 		                        			<li>Return pages that have been identified as unused for a sufficiently long period of time to the operating system.</li>
 		                        			<li>Allows them to be reused for other processes.</li>
 		                        			<li>Un-committing memory will never cause the heap size to shrink below the minimum size specified on the command line.</li>
-											<li>If the minimum & maximum heap sizes are set to the same value, no memory will be uncommitted.</li>
 		                        		</ul>
+		                        	</li>
+		                        	<li class="fragment">
+		                        		<span style="color: orange">Java 15:</span> two GCs are graduated to - <span class="fragment highlight-green">Production</span>
+		                        		<ul class="x-small">
+		                        			<li><Strong>ZGC</Strong>: A Scalable Low-Latency Garbage Collector.</li>
+		                        			<li><Strong>Shenandoah</Strong>: A Low-Pause-Time Garbage Collector.</li>
+		                        		</ul>
+		                        		<br/>
 		                        	</li>
 		                        </ul>
                         	</div>
@@ -1195,11 +1227,12 @@ true
 			        </section>
 				   	<!-- Slide 11.4 - Security Improvement: TLS 1.3 -->
 			        <section>
-			            <h2>Security Improvement: TLS 1.3 - <span style="color: orange">Java 11:</span></h2>
+			            <h2>Security Improvement: TLS 1.3 - <span style="color: orange">Java 11, 15:</span></h2>
 			            <ul>
 			            	<li><a style="color: white" href="http://openjdk.java.net/jeps/332"><span class="jep">JEP 332</span></a> introduces support for the <strong>TLS 1.3</strong>.<br/><br/>
 			            	</li>
-			            	<li class="fragment">As the JDK now supports this, although this does not extend to Datagram Transport Layer Security <strong>(DTLS)</strong>.</li>
+			            	<li class="fragment">As the JDK now supports this, although this does not extend to Datagram Transport Layer Security <strong>(DTLS)</strong>.<br/><br/></li>
+			            	<li class="fragment"><span style="color: orange">Java 15</span> introduced - <a style="color: white" href="http://openjdk.java.net/jeps/339"><span class="jep">JEP 339</span></a>: Edwards-Curve Digital Signature Algorithm <strong>(EdDSA)</strong>, as described by <a href="https://tools.ietf.org/html/rfc8032">RFC 8032</a>.</li>
 			            </ul>
 			        </section>
 		        </section>
@@ -1281,7 +1314,9 @@ true
 					        	<li class="fragment fade-right"><span style="color: orange">Java 11:</span><strong> Java Applet</strong>;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <span style="color: red">Removed</span>&nbsp;&nbsp;&nbsp;&nbsp; - Java 8 is still supported.</li>
 								<li class="fragment fade-right"><span style="color: orange">Java 11:</span><strong> Java WebStart</strong>&nbsp;&nbsp;&nbsp; - <span style="color: red">Removed</span>&nbsp;&nbsp;&nbsp;&nbsp; - jlink, jpackager tools.</li>
 								<li class="fragment fade-right"><span style="color: orange">Java 11:</span><strong> Nashorn engine</strong>&nbsp;&nbsp; - <span style="color: gray">Deprecated</span>&nbsp; - use <em>Graal.js</em> with <em>GraalVM</em>.</li>
-								<li class="fragment fade-right"><span style="color: orange">Java 14:</span><strong> Pack200 tools</strong>&nbsp;&nbsp;&nbsp;&nbsp; - <span style="color: red">Remove</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - use jlink or jpackage tools.</li>
+								<li class="fragment fade-right"><span style="color: orange">Java 14:</span><strong> Pack200 tools</strong>&nbsp;&nbsp;&nbsp;&nbsp; - <span style="color: red">Removed</span>&nbsp;&nbsp;&nbsp;&nbsp; - use jlink or jpackage tools.</li>
+								<li class="fragment fade-right"><span style="color: orange">Java 15:</span><strong> Nashorn engine</strong>&nbsp;&nbsp; - <span style="color: red">Removed</span>&nbsp;&nbsp;&nbsp; - use <em>Graal.js</em> with <em>GraalVM</em>.</li>
+								<li class="fragment fade-right"><span style="color: orange">Java 15:</span><strong> RMI Activation</strong>&nbsp;&nbsp;&nbsp; - <span style="color: gray">Deprecated</span>&nbsp;&nbsp; - for future removal.</li>
 					        </ul>
 			        </section>
 		        </section>
