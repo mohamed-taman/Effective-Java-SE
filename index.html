@@ -4,9 +4,9 @@
 	<head>
 	    <meta charset="utf-8">
 
-	    <title>Effective Java SE 16 APIs &amp; Language features, makes your life easier</title>
+	    <title>Effective Java SE 9-19 APIs &amp; Language features, makes your life easier</title>
 
-	    <meta name="description" content="A short summary &amp; overview of the new features  &amp; the hidden treasures of Java SE 16">
+	    <meta name="description" content="A short summary &amp; overview of the new features  &amp; the hidden treasures of Java SE 19">
 	    <meta name="author" content="Mohamed Mahmoud Taman">
 
 	    <meta name="apple-mobile-web-app-capable" content="yes"/>
@@ -49,7 +49,11 @@
         	<img src="media/img/logos/O-Groundbreakers-Logo.png" width="220" height="60" alt="Oracle Groundbreakers Ambassador" />
         	<img src="media/img/logos/Java Champoins.jpeg" width="60" height="60" alt="Java Champions" />
     	</div>
-    	
+
+		<div style="position: absolute; top: 5px; z-index: 6; left: 0; margin-left: 10px">
+			<img src="media/img/logos/Nlogo_white.png" width="200" height="50" alt="Nortal Logo" /><br/>
+<!--			<img src="media/img/logos/infoshare-ukraine-logo.svg" width="200" height="50" alt="InfoShare Logo" />-->
+		</div>
     	<!-- 
     	<div style="position: absolute; top: 5px; z-index: 6; left: 0; margin-left: 10px">
         <img src="media/img/logos/tmc.png" width="60" height="60" alt="TMC conference" />
@@ -69,7 +73,7 @@
 		        	<!-- Slide 1.1 - Cover page -->
 			        <section>
 			        	<div style="width: 80%; margin: 0 auto">      
-	                    	<h3 style="text-align: center;margin: 00px 0 80px 0">Effective <span style="color: orange">Java SE 9</span> through <span style="color: orange">16</span> APIs &amp; Language features, that make your life easier.</h3>
+	                    	<h3 style="text-align: center;margin: 00px 0 80px 0">Effective <span style="color: orange">Java SE 9</span> through <span style="color: orange">19</span> APIs &amp; Language features, that make your life easier.</h3>
 
 			            </div>
 			                <div class="profile" style="position: absolute; top: 200px; left: 300px">
@@ -82,7 +86,7 @@
 			                                Mohamed Taman
 			                            </div>
 			                            <div class="profile-usertitle-job">
-			                                 Solutions Architect @Nortal,
+			                                 Chief Solutions Architect @Nortal,
 			                                 Belgrade, Serbia.
 			                            </div>
 			                        </div>
@@ -114,18 +118,18 @@
 		                <div class="container" style="font-size: .70em;">
 			                <ul>
 			                	<li class="fragment fade-down"><strong>Chief Solutions Architect</strong><br/>
-									Works for Effortel Belgium & <strong>CEO</strong> of SiriusX Innovations.<br/>
+									Works for Nortal Serbia & <strong>CEO</strong> of SiriusX Innovations.<br/>
 									Egyptian, and lives in Belgrade, Serbia.
 									<br/><br/>
 			                	</li>
 			                	<li class="fragment fade-down">
-			                		A <strong> Java Champion</strong>, <strong>Oracle Groundbreakers Ambassador</strong>, and <strong>Jakarta EE Ambassador</strong>. Web / Cloud / Spring / Mobile / Big Data / IoT / Blockchain / DevOps, JCP, <u>2013 - 2015</u> Duke Award winner 3 times, <u>2013</u> JCP award winner, International Speaker & Author.<br/><br/>
+			                		A <strong> Java Champion</strong>, <strong>Oracle ACE</strong>, and <strong>Jakarta EE Ambassador</strong>. Web / Cloud / Spring / Mobile / Big Data / IoT / Blockchain / DevOps, JCP, <u>2013 - 2015</u> Duke Award winner 3 times, <u>2013</u> JCP award winner, International Speaker & Author.<br/><br/>
 			                	</li>
 			                	</ul>
 		                		<table class="fragment fade-down" style="width: 75%; height: 75%">
 		                        	<tr>
-		                        		<td style="vertical-align: middle; padding-right: 5"><img data-src="media/img/JavaMag.jpg" style="background-color: transparent; border-color: transparent; width: 400px;margin: 0px 0px;"/></td>
-		                        		<td style="vertical-align: middle; padding-right: 5"><img data-src="media/img/OracleMag.jpg" style="background-color: transparent; border-color: transparent; width: 400px;margin: 0px 0px;"/></td>
+		                        		<td style="vertical-align: middle; padding-right: 5"><img data-src="media/img/JavaMag.jpg" style="background-color: transparent; border-color: transparent; width: 400px;margin: 0 0;" alt=""/></td>
+		                        		<td style="vertical-align: middle; padding-right: 5"><img data-src="media/img/OracleMag.jpg" style="background-color: transparent; border-color: transparent; width: 400px;margin: 0 0;"/></td>
 		                        		<td style="vertical-align: middle; padding-right: 5"><img data-src="media/img/infoQ.jpg" style="background-color: transparent; border-color: transparent; width: 400px;margin: 0px 0px;"/></td>
 		                        		<td style="vertical-align: middle; padding-right: 5"><img data-src="media/img/IBM Developer.jpeg" style="background-color: transparent; border-color: transparent; width: 400px;margin: 0px 0px;"/></td>
 		                        		<td style="vertical-align: middle; padding-right: 5"><img data-src="media/img/B03998_JavaFX 8 Essentials.jpg" style="background-color: transparent; border-color: transparent; width: 600px;margin: 0px 0px;"/></td>
@@ -157,7 +161,7 @@
 			            </ul>
 			            <br/><br/>
 			            <div class="fragment fade-right">
-			            	Or more easer try to <i>google</i> 🕵 me <strong>"Mohamed Taman"</strong>
+			            	Or Easier try to <em>google</em> 🕵 me <strong>"Mohamed Taman"</strong>
 			            </div> 
 			        </section>
 		         </section>
@@ -166,8 +170,11 @@
 		        -->
 		        <section>
 		           <h2>Java History 🛣 </h2>
-		           <img style="border-radius: 15px 15px 15px 15px" class="fragment fade-down" src="media/img/image_01.png" alt="Java history">
-		        </section>
+					<img style="border-radius: 15px" width="1460" height="500" class="fragment fade-down" src="media/img/JepPerRelease.png" alt="Java history"/>
+					<p class="x-small fragment">Image source from:
+						<a href="https://inside.java/2022/09/20/the-arrival-of-java-19/">The arrival of Java 19</a>
+					</p>
+				</section>
 
 		        <!--
 		          === Slide 3 - Modularity =======================================================
@@ -245,26 +252,26 @@
 					<p>
 					  Each 2 years we will have an LTS Release.
 					</p>
-			            <!-- <img style="border-radius: 10px 10px 10px 10px; width: 70%" class="fragment" src="media/img/image_02.jpg" alt="6 month release"> -->
 			        </section>
 			        <!-- Slide 4.3 - Java SE 11 Vacuum Cleaner -->
 			        <section>
 			           <h1><span style="color: orange">Java SE 11</span>, is the <br/><br/><span class="fragment" style="font-size:120%">🧹</span><br/><span class="fragment">for Java jungle...</span></h1>
 			        </section>
 			        <!-- Slide 4.4 - Is Java Still Free -->
-			        <section>
+                    <!--
+                    <section>
 			        	<h2>What is behind the new licensing model of Oracle Java?</h2>
 			            <p>Oracle licensed Java to be commercial starting from Java 8.</p>
-			            <br/> <br/> 
+			            <br/> <br/>
 			            <h3 class="fragment">Is <em>Java Still Free</em> of charge?</h3>
-			            <br/> 
+			            <br/>
 			            <div class="fragment">
 			            <h3>Yes it is 💃🕺</h3>
 			            👉 <a href="https://medium.com/@javachampions/java-is-still-free-2-0-0-6b9aa8d6d244">Java is Still Free 2.0.3</a>
 						</div>
 			        </section>
+			        -->
 		        </section>
-
 		        <!--
 		          === Slide 5 - First time preview language feature (Why) =======================================
 		        -->
@@ -866,8 +873,6 @@ public final class FilledRectangle extends Rectangle {...}
 
 public non-sealed class Square extends Shape {...}</code></pre>
 			        </section>
-
-
 		        </section>
 
 		        <!--
@@ -1018,7 +1023,7 @@ true
 			        <section>
 			           <h2>Compact number format with <code>CompactNumberFormat</code> - <span style="color: orange">Java 12</span></h2>
 			           <p class="x-small">
-			           	 refers to the representation of a number in a short or human-readable form. For example, in the <strong>en_US</strong> locale, 1000 can be formatted as <strong>“1K”</strong> and 1000000 as <strong>“1M”</strong>.
+			           	 Refers to the representation of a number in a short or human-readable form. For example, in the <strong>en_US</strong> locale, 1000 can be formatted as <strong>“1K”</strong> and 1000000 as <strong>“1M”</strong>.
 			           </p>
 			           <div class="fragment" data-markdown style="width: 80%; margin: 0 auto">
 	                        <script type="text/template">
@@ -1038,7 +1043,34 @@ true
 		           			<a href="https://developer.ibm.com/tutorials/java-theory-and-practice-1/">Java theory and practice: Explore new Java SE 11 and 12 APIs and language features.</a>
 		            	</p>
 			        </section>
-					 <!-- Slide 10.4 - Stream: Teeing collector -->
+
+					<!-- Slide 10.4 - Compact Number Format -->
+					<section>
+						<h2>Period-of-day was added to <code>java.time</code> - <span style="color: orange">Java 16</span></h2>
+						<p class="x-small">
+							Developers might want to express periods in a day, such as <strong>“in the morning," "in the afternoon,"</strong> or <strong>“at night,”</strong> <br/> not just <strong>a.m.</strong> or <strong>p.m</strong>.
+						</p>
+						<div class="fragment" data-markdown style="width: 80%; margin: 0 auto">
+							<script type="text/template">
+								````
+								jshell> import java.time.format.DateTimeFormatter
+								jshell> import java.time.LocalTime
+
+								jshell> DateTimeFormatter
+								        .ofPattern("B")
+								        .format(LocalTime.now())
+
+								$8 ==> "in the afternoon"
+								````
+							</script>
+						</div>
+
+						<p class="x-small fragment">For more, here is my <strong>article</strong> @Java Magazine:<br/>
+							<a href="https://blogs.oracle.com/javamagazine/post/the-hidden-gems-in-java-16-and-java-17-from-streammapmulti-to-hexformat/">Hidden gems in Java 16 and Java 17, from Stream.mapMulti to HexFormat.</a>
+						</p>
+					</section>
+
+					<!-- Slide 10.5 - Stream: Teeing collector -->
 			        <section>
 			           <h2>Streams: The <code>Teeing</code> Collectors method - <span style="color: orange">Java 12</span></h2>
 			           <div class="fragment" data-markdown style="width: 90%; margin: 0 auto">
@@ -1058,7 +1090,8 @@ true
 				        	</script>
 			        	</div>
 			        </section>
-			         <!-- Slide 10.5 - Comparing 2 files -->
+
+			         <!-- Slide 10.6 - Comparing 2 files -->
 			        <section>
 			           <h2>Comparing 2 files - <span style="color: orange">Java 12</span></h2>
 			           <p>what could we do with case such as this:</p>
@@ -1070,7 +1103,6 @@ true
 
 				            Files.mismatch(Path.of("/file 1"),Path.of("/file 2"));
 
-
 				            ````
 				        	</script>
 			        	</div>
@@ -1080,9 +1112,9 @@ true
 			        	</p>
 			        </section>
 
-			        <!-- Slide 10.6 - New Socket API -->
+			        <!-- Slide 10.7 - New Socket API -->
 			        <section>
-						<h2>Re-implement the legacy Socket API - <span style="color: orange">Java 13</span>
+						<h2>Re-implement the legacy Socket API - <span style="color: orange">Java 13 - Java 19</span>
 							<div data-markdown>
 		                        <script type="text/template">
 					            [JEP 353](https://openjdk.java.net/jeps/353)<!-- .element: class="jep" -->
@@ -1095,9 +1127,70 @@ true
 				           	<li class="fragment">The implementation of these APIs uses several techniques (such as using the <em>thread stack as the IO buffer</em>) which make them inflexible and hard to maintain.<br/><br/></li> 
 				           	<li class="fragment"><Strong style="color: orange;">JDK 13</Strong> provides a new implementation, <code>NioSocketImpl</code>, which no longer requires native code, thus simplifying the act of <strong>porting to multiple platforms</strong>.<br/><br/></li>
 				           	<li class="fragment">Make use of the existing buffer cache mechanism (eliminating the use of the thread stack for this purpose) and uses <code>java.util.concurrent</code> locks rather than synchronized methods.<br/><br/></li>
-				           	<li class="fragment">This will make it simpler to integrate with <strong>fibers</strong>, which are being provided as part of <strong>Project Loom</strong> when that is integrated with the JDK.</li>
+							<li class="fragment">This will make it simpler to integrate with <strong>Virtual Threads</strong>, which are being provided as part of <strong>Project Loom</strong> that is integrated with the <strong>JDK 19</strong>.</li>
 			            </ul>
 			        </section>
+
+					<!-- Slide 10.8.1 - Java 18 UTF by default -->
+					<section>
+						<h2>UTF-8 by default - <span style="color: orange">Java 18</span>
+							<div data-markdown>
+								<script type="text/template">
+									[JEP 410](https://openjdk.java.net/jeps/410)<!-- .element: class="jep" -->
+									<!-- .element: class="small" -->
+								</script>
+							</div>
+						</h2>
+						<p class="small">Write this on macOS or Linux</p>
+						<div class="fragment" data-markdown style="width: 100%; margin: 0 auto">
+							<script type="text/template">
+								````
+								private static void writeToFile() {
+								  try (FileWriter writer = new FileWriter("Jep400-example.txt");
+								    BufferedWriter bufferedWriter = new BufferedWriter(writer)) {
+								    bufferedWriter.write("مرحبا بكم في جافا جيب ٤٠٠");
+								  }
+								  catch (IOException e) {
+								    System.err.println(e);
+								  }
+								}
+								````
+							</script>
+						</div>
+					</section>
+					<section>
+						<h2>UTF-8 by default - <span style="color: orange">Java 18</span></h2>
+							<p>Read it on Windows OS</p>
+							<div class="small fragment" data-markdown style="width: 80%; margin: 0 auto">
+								<script type="text/template">
+									````
+									private static void readFromFile() {
+									  try (FileReader reader = new FileReader("Jep400-example.txt");
+									    BufferedReader bufferedReader = new BufferedReader(reader)) {
+									    String line = bufferedReader.readLine();
+									    System.out.println(line);
+									  }
+									  catch (IOException e) {
+									    System.err.println(e);
+									  }
+									}
+									````
+								</script>
+						</div>
+
+						<p class="small fragment">you will get this:</p>
+						<div class="small fragment" data-markdown style="width: 80%; margin: 0 auto">
+							<script type="text/template">
+								````
+								Ù Ø±Ø­Ø¨Ø§ Ø¨Ù Ù Ù Ù Ø¬Ø§Ù Ø§ Ø¬Ù Ø¨ Ù¤Ù Ù
+								````
+							</script>
+						</div>
+
+						<p class="x-small fragment">For more, here is my <strong>article</strong> @Java Magazine:<br/>
+							<a href="https://blogs.oracle.com/javamagazine/post/java-18-gems-jdks">The not-so-hidden gems in Java 18: The JDK Enhancement Proposals.</a>
+						</p>
+					</section>
 		        </section>
 
 		        <!--
@@ -1106,7 +1199,7 @@ true
 		        <section>
 		           <!-- Slide 11.1 - Security and improvements -->
 			        <section>
-			           <h1>🛡 </br> Security & </br>Other Improvements</h1>
+			           <h1>🛡 <br/> Security & <br/>Other Improvements</h1>
 			        </section>
 			        <!-- Slide 11.2 - Library Improvements -->
 			        <section>
@@ -1427,7 +1520,7 @@ Designed for both development and production time use.
 		           <img style="height: 500px" class="fragment fade-down" src="media/img/question.jpg" alt="Any Questions????"/>
 		        </section>
 
-		    </div>
+
 		</div>
 
 		<script src="lib/js/head.min.js"></script>
