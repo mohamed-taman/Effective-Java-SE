@@ -51,14 +51,10 @@
     	</div>
 
 		<div style="position: absolute; top: 5px; z-index: 6; left: 0; margin-left: 10px">
-			<img src="media/img/logos/Nlogo_white.png" width="200" height="50" alt="Nortal Logo" /><br/>
-<!--			<img src="media/img/logos/infoshare-ukraine-logo.svg" width="200" height="50" alt="InfoShare Logo" />-->
+		<!-- <img src="media/img/logos/Nlogo_white.png" width="200" height="50" alt="Nortal Logo"/>-->
+			<img src="media/img/logos/ananas-logo.svg" alt="Ananas Logo" />
+			<br/>
 		</div>
-    	<!-- 
-    	<div style="position: absolute; top: 5px; z-index: 6; left: 0; margin-left: 10px">
-        <img src="media/img/logos/tmc.png" width="60" height="60" alt="TMC conference" />
-    	</div>
-    	 -->
 		
 		<!-- Slides -->
 		<div class="reveal">
@@ -86,7 +82,7 @@
 			                                Mohamed Taman
 			                            </div>
 			                            <div class="profile-usertitle-job">
-			                                 Chief Solutions Architect @Nortal,
+											 Consultant Solutions Architect @Ananas,
 			                                 Belgrade, Serbia.
 			                            </div>
 			                        </div>
@@ -118,7 +114,7 @@
 		                <div class="container" style="font-size: .70em;">
 			                <ul>
 			                	<li class="fragment fade-down"><strong>Chief Solutions Architect</strong><br/>
-									Works for Nortal Serbia & <strong>CEO</strong> of SiriusX Innovations.<br/>
+									Consultant @Ananas, works for Nortal Serbia & <strong>CEO</strong> of SiriusX Innovations.<br/>
 									Egyptian, and lives in Belgrade, Serbia.
 									<br/><br/>
 			                	</li>
@@ -151,6 +147,8 @@
 
 		                    <li><a href="https://eg.linkedin.com/in/mohamedtaman">https://eg.linkedin.com/in/mohamedtaman</a><br/></li>
 
+							<li><a href="https://www.instagram.com/m.m.taman">https://www.instagram.com/m.m.taman</a><br/></li>
+
 		                    <li><a href="https://github.com/mohamed-taman">https://github.com/mohamed-taman</a><br/></li>
 
 		                    <li><a href="https://www.slideshare.net/tamanm">https://www.slideshare.net/tamanm</a><br/></li>
@@ -161,7 +159,7 @@
 			            </ul>
 			            <br/><br/>
 			            <div class="fragment fade-right">
-			            	Or Easier try to <em>google</em> 🕵 me <strong>"Mohamed Taman"</strong>
+			            	Or <em>google</em> 🕵 me <strong>"Mohamed Taman"</strong>
 			            </div> 
 			        </section>
 		         </section>
@@ -791,16 +789,16 @@ kind ==> "Even"</code></pre>
                          	<div class="twocol">
                          		<pre class="small fragment fade-down" style="width: 95%"><code>//Old Days
 if (obj instanceof String) {
-   // need to declare & cast again the object
+   // Need to declare & cast again the object
    String str = (String) obj; 
    .. str.contains(..) ..
 }else{
    .. str = ....
 }</code></pre>
 
-<pre class="small fragment fade-right" style="width: 95%"><code>//Java 14 enhancement
+<pre class="small fragment fade-right" style="width: 95%"><code>//Java 14 Onwards
 if (!(obj instanceof String str)) {
-    // no need to declare str object again with casting
+    // No need to declare str object again with casting
     .. str.contains(..) ..
 } else {
     .. str....
@@ -808,19 +806,18 @@ if (!(obj instanceof String str)) {
 							</div>
 							<div class="twocol fragment fade-down">
                        			<pre class="small" style="width: 99%"><code>//More complex examples
-if (obj instanceof String str && str.length() > 5) { .. str.contains(..) .. }
-
-if (obj instanceof String str || str.length() > 5) { .. str.contains(..) .. }</code></pre>
-						
+if (obj instanceof String str && str.length() > 5) { .. str.contains(..) .. }</code></pre>
+								<br/>
 								<p>The use of pattern matching in <strong>instanceof</strong> should dramatically reduce the overall number of explicit casts in Java programs.</p>
 							</div>
                     	</div>
 			        </section>
 			        <!-- Slide 9.9 - Records -->
 			        <section>
-			        	<h3>Records (Preview) - <span style="color: orange">Java 14</span>, and (Second Preview) <span style="color: orange">Java 15</span></h3>
+			        	<h3>Records (1st Preview) <span style="color: orange">Java 14</span>, (2nd Preview) <span style="color: orange">Java 15</span>, & (Standardized) <span style="color: orange">Java 16</span></h3>
 			        	<a class="jep" style="color: white" href="http://openjdk.java.net/jeps/359">JEP 359</a>
-			        	<a class="jep" style="color: white" href="http://openjdk.java.net/jeps/384">JEP 384</a>			    
+			        	<a class="jep" style="color: white" href="http://openjdk.java.net/jeps/384">JEP 384</a>
+						<a class="jep" style="color: white" href="http://openjdk.java.net/jeps/395">JEP 395</a>
 				        <div class="x-small fragment fade-down" style="width: 90%; text-align: left; margin-left: 5%">We need to write a lot of low-value, repetitive code to write a simple data carrier class responsibly: <code>constructors</code>, <code>accessors</code>, <code>equals()</code>, <code>hashCode()</code>, <code>toString()</code>, etc. To avoid this repetitive code, Java introduced records. In the Second preview it works well with Sealed Classes, and could be declared locally.</div>
 				        <pre class="small fragment fade-left"><code>final class Point {
     public final int x;
@@ -873,6 +870,29 @@ public final class FilledRectangle extends Rectangle {...}
 
 public non-sealed class Square extends Shape {...}</code></pre>
 			        </section>
+
+					<!-- Slide 9.10 - Records & Sealed Classes -->
+					<section>
+						<h3>Records (2nd Preview) - <span style="color: orange">Java 15</span></h3>
+						<a class="jep" style="color: white" href="http://openjdk.java.net/jeps/359">JEP 359</a>
+						<div class="x-small fragment fade-down" style="width: 90%; text-align: left; margin-left: 5%">It allow you to define a sealed interface and implement them on your records</div>
+						<pre class="small fragment fade-left"><code>sealed interface Car permits BMW, Audi { ... }
+
+record BMW(int price) implements Car { ... }
+
+record Audi(int price, String model) implements Car { ... }</code></pre>
+						<div class="x-small fragment fade-down" style="width: 90%; text-align: left; margin-left: 5%">Local records are a great boon for Java developers who would earlier have to create helper records</div>
+						<pre class="small fragment fade-left"><code>List&lt;Merchant&gt; findTopMerchants(List&lt;Merchant&gt; merchants, int month) {
+    // Local record
+    record MerchantSales(Merchant merchant, double sales) {}
+
+    return merchants.stream()
+        .map(merchant -> new MerchantSales(merchant, computeSales(merchant, month)))
+        .sorted((m1, m2) -> Double.compare(m2.sales(), m1.sales()))
+        .map(MerchantSales::merchant)
+        .toList();
+}</code></pre>
+					</section>
 		        </section>
 
 		        <!--
@@ -1432,6 +1452,7 @@ true
 					<section>
 						<h1>Important Tools</h1>
 					</section>
+
 		            <!-- Slide 13.2.1 - Micro-benchmarking -->
 					<section>
 			           <h2>Micro-benchmarking with JMH - <span style="color: orange">Java 12</span></h2>
@@ -1443,6 +1464,7 @@ true
 			           <br/>
 			           <p style="text-align: left;" class="fragment small">JMH allows you to write a simple Java class containing several methods that can be turned into a micro-benchmark using annotations. Many configuration options for the benchmark can also be configured through annotations.</p>
 			        </section>
+
 			 	   <!-- Slide 13.2.2 - JMH Micro-bench tools. -->
 					<section>
 			            <h3>JMH Example</h3>
@@ -1472,6 +1494,7 @@ public class MyBenchmark {
 		           			<a href="http://tutorials.jenkov.com/java-performance/jmh.html">JMH - Java Microbenchmark Harness</a>
 		            	</p>
 			        </section>
+
 			 	   <!-- Slide 13.3 - VisualVM tool -->
 					<section>
 			           <img src="media/img/visualvm_logo.png" style="width: 40%;border-color: transparent; background-color: transparent; ">
@@ -1486,6 +1509,7 @@ Designed for both development and production time use.
 		           			<a href="https://visualvm.github.io/index.html">https://visualvm.github.io/index.html</a>
 		            	</p>
 			        </section>
+
 			 	   <!-- Slide 13.4 - Flight Recorder tool -->
 					<section>
 			        	<h2>Flight Recorder ⏺ - <span style="color: orange">Java 11</span></h2>
@@ -1499,6 +1523,24 @@ Designed for both development and production time use.
 			            	<li class="fragment fade-down">This feature open sourced to the OpenJDK through<a style="color: white" href="http://openjdk.java.net/jeps/328"><span class="jep">JEP 328</span></a>.</li>
 			            </ul>
 			        </section>
+
+					<!-- Slide 13.5 - Java WebServer. -->
+					<section>
+						<h2>Simple Web Server - <span style="color: orange">Java 18</span></h2>
+						<ul class="x-small">
+							<li class="fragment">Many development environments let programmers start up a rudimentary HTTP web server to test some functionality for static files. That capability comes to Java 18 through JEP 408.<br/><br/></li>
+							<li class="fragment">The simplest way to start the web server is with the <code>jwebserver</code> command. By default, this command listens to localhost on port <strong>8000</strong>. The server also provides a file browser to the current directory.</li>
+						</ul>
+						<pre class="small fragment fade-right"><code>[mtaman]:~ jwebserver
+Binding to loopback by default. For all interfaces use "-b 0.0.0.0" or "-b ::".
+Serving /Users/mohamed_taman/Hidden Gems in Java 18/code and subdirectories on 127.0.0.1 port 8000
+URL http://127.0.0.1:8000/</code></pre>
+
+						<p class="x-small fragment fade-down">For more visit official my latest articles about JDK 18:<br/>
+							<a href="https://blogs.oracle.com/javamagazine/post/java-18-gems-jdks">The not-so-hidden gems in Java 18: The JDK Enhancement Proposals</a>, <br/> and <br/>
+							<a href="https://blogs.oracle.com/javamagazine/post/java-18-gems-hidden-subtle-changes-deprecations">The hidden gems in Java 18: The subtle changes</a>
+						</p>
+					</section>
 		        </section>
 		        
 		        <!--
