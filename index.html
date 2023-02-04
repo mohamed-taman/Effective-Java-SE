@@ -51,8 +51,8 @@
     	</div>
 
 		<div style="position: absolute; top: 5px; z-index: 6; left: 0; margin-left: 10px">
-		<!-- <img src="media/img/logos/Nlogo_white.png" width="200" height="50" alt="Nortal Logo"/>-->
-			<img src="media/img/logos/ananas-logo.svg" alt="Ananas Logo" />
+		 <img src="media/img/logos/Nlogo_white.png" width="200" height="50" alt="Nortal Logo"/>
+<!--			<img src="media/img/logos/ananas-logo.svg" alt="Ananas Logo" />-->
 			<br/>
 		</div>
 		
@@ -477,7 +477,7 @@
 				            		
 				            		var dirName = ".";
 				            		
-				            		if ( args == null || args.length< 1 ){
+				            		if ( args == null || args.length < 1 ){
 				            			System.err.println("Listing the current directory...");
 				            		} else {
 				            			dirName = args[0];
@@ -797,7 +797,7 @@ if (obj instanceof String) {
 }</code></pre>
 
 <pre class="small fragment fade-right" style="width: 95%"><code>//Java 14 Onwards
-if (!(obj instanceof String str)) {
+if (obj instanceof String str) {
     // No need to declare str object again with casting
     .. str.contains(..) ..
 } else {
