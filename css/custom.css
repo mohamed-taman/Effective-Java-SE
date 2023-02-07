@@ -203,7 +203,7 @@ body {
   background: rgba(63,63,50,.7);
 }
 .profile .profile-userpic {
-  padding: 0px 10px
+  padding: 0 10px
 }
 .profile .profile-userpic img {
   float: left;
